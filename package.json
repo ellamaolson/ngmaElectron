@@ -20,8 +20,20 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.2",
+    "electron": "^3.0.10",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^2.8.3",
+    "jquery": "^3.3.1"
+  },
+  "dependencies": {
+    "glob": "^7.1.2",
+    "node-sloc": "^0.1.11",
+    "parse-gitignore": "^0.5.1",
+    "ts-node": "^7.0.0",
+    "ts-node-dev": "^1.0.0-pre.26",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2",
+    "typescript-parser": "^2.6.1",
+    "electron-drag-drop": "^1.1.0"
   }
 }
