@@ -3,6 +3,8 @@ const customButton = document.getElementById("custom-button");
 const customText = document.getElementById("custom-text");
 const scanButton = document.getElementById("scanbutton");
 
+//analyzeFile();
+
 // Opens file manager
 customButton.addEventListener("click", function () {
     realFileButton.click();
@@ -11,6 +13,7 @@ customButton.addEventListener("click", function () {
 
 // Displays file name when user selects a file
 realFileButton.addEventListener("change", function () {
+    
 
     // realFileButton performs all actions --> contains value of file
     // Updates customText to name of file
@@ -55,5 +58,16 @@ function analyzeFile() {
 
     //print ngma results
     var h = document.querySelector('.results-panel');
-    h.innerHTML = '<h1>' + analysis.runAppStatistics() + '</h1>';
+   var blah = '<p>'
+        analysis.runAppStatistics().forEach(function(element) {
+            if(element == analysis.runAppStatistics()[0]) {
+                blah += '<br><h4>' + element + '</h4>';
+            } else {
+                blah += element + '<br>';
+            }
+        })  
+    blah += '<p>';
+    h.innerHTML = blah; 
+
+    
 }

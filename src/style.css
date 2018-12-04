@@ -23,3 +23,8 @@
     border-color: #000;
     color: #000;
 }
+
+.centered-box {
+    margin-left: auto;
+    margin-right: auto;
+}

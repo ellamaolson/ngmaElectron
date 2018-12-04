@@ -372,43 +372,42 @@ export class AnalysisTool {
         return Promise.resolve(preparationReport);
     }
 
-    public runAppStatistics(): string {
-        let report = "\x1b[1m\nApp Statistics\x1b[0m";
+    //Returns an array of the app statistics
+    public runAppStatistics(): string[] {
+        let reportArray: string[] = [];
+        reportArray[0] = "App Statistics";
+
         if (this.analysisDetails.controllersCount > 0 ||
             this.analysisDetails.componentCount > 0 ||
             this.analysisDetails.jsFileCount > 0 ||
             this.analysisDetails.tsFileCount > 0) {
-            report += "\n  * Complexity: " + this.analysisDetails.controllersCount + " controllers, " +
-                this.analysisDetails.componentCount + " AngularJS components, " +
-                +this.analysisDetails.jsFileCount + " JavaScript files, and " +
-                this.analysisDetails.tsFileCount + " Typescript files.";
+            
+            reportArray[1] = " * Complexity: " + this.analysisDetails.controllersCount + " controllers, " +
+            this.analysisDetails.componentCount + " AngularJS components, " +
+            +this.analysisDetails.jsFileCount + " JavaScript files, and " +
+            this.analysisDetails.tsFileCount + " Typescript files.";
         }
-        report += "\n  * App size: " + this.analysisDetails.linesOfCode + " lines of code" +
-            "\n  * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders, " +
-            this.analysisDetails.relevantFilesOrFolderCount + " relevant files/folders" +
-            "\n  * AngularJS Patterns: ";
+        reportArray[2] = " * App size: " + this.analysisDetails.linesOfCode + " lines of code";
+        reportArray[3] = " * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders,";
+        reportArray[4] = " * AngularJS Patterns: "
+
         if (this.analysisDetails.rootScope) {
-            report += " $rootScope, ";
+            reportArray[4] +=  " $rootScope, "
         }
         if (this.analysisDetails.compile) {
-            report += " $compile, ";
+            reportArray[4] += " $compile, "
         }
         if (!this.analysisDetails.hasUnitTest) {
-            report += " no unit tests, ";
+            reportArray[4] += " no unit tests, "
         }
         if (this.analysisDetails.jsFileCount > 0) {
-            report += " JavaScript, ";
+            reportArray[4] += " JavaScript, "
         }
         if (this.analysisDetails.controllersCount > 0) {
-            report += " .controller, ";
+            reportArray[4] += " .controller, "
         }
 
-        if (report.endsWith(", ")) {
-            report = report.slice(0, -2);
-        } else if (report.endsWith("  * AngularJS Patterns: ")) {
-            report += "N/A";
-        }
-        return report;
+        return reportArray;
     }
 
     /**
