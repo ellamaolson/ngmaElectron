@@ -1,18 +1,6 @@
-# electron-quick-start-typescript
+# ngMigration Assistant Desktop App
 
-**Clone and run for a quick way to see Electron in action.**
-
-This is a typescript port of the [Electron Quick Start repo](https://github.com/electron/electron-quick-start) -- a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation.
-
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
-
-A basic Electron application needs just these files:
-
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.ts` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
-
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start).
+ngMigration Assistant Electron is an easy-to-use desktop app that scans an AngularJS application and recommends how to migrate to Angular. 
 
 ## To Use
 
@@ -20,16 +8,14 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/electron-quick-start-typescript
+git clone https://github.com/ellamaolson/ngmaElectron
 # Go into the repository
-cd electron-quick-start-typescript
+cd ngmaElectron
 # Install dependencies
 npm install
 # Run the app
 npm start
 ```
-
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
 ## Re-compile automatically
 
@@ -39,15 +25,42 @@ To recompile automatically and to allow using [electron-reload](https://github.c
 npm run watch
 ```
 
-## Resources for Learning Electron
+## App Composition
 
-- [electron.atom.io/docs](http://electron.atom.io/docs) - all of Electron's documentation
-- [electron.atom.io/community/#boilerplates](http://electron.atom.io/community/#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
+###  Class: analysisTool
 
-## License
+Runs the analysis on the provided directory and returns a recommendation on which migration path to take to Angular. It looks at the complexity, source lines of code (sloc), antipatterns, AngularJS version, and preparation necessary for migration. It identifies the files that need to be modified and the specific changes that will prepare the app for upgrading. 
 
-[CC0 1.0 (Public Domain)](LICENSE.md)
+### Methods
+
+* ```buildPathIgnoringGlobs()``` Builds a new filesystem by removing files matching the ignore globs using glob. Returns as an array of the new filesystem.
+* ```getGlobsFromGitignore()``` Parses .gitignore file into an array of globs and appends default globs to the array. Filters out patterns starting with ! from the array because ! means to never ignore. Returns the globs to ignore.
+* ```countLinesOfCode()``` ***asynchronous*** Counts sloc using node-sloc to traverse new filesystem returned by buildPathIgnoringGlobs(). Returns a promise that resolves to sloc.
+* ```runAnalysis()``` Traverses through filtered filesystem returned by buildPathIgnoringGlobs() and calls testFile() to run the individual tests.
+* ```runAntiPatternReport()``` ***asynchronous*** Creates the anti-pattern report and calculates the rewriteThreshold runRecommendation() uses. Each time an anti-pattern is found, general instructions and files needing corrections are appended to the preparation report. Returns a promise that resolves to the preparation report. 
+* ```runRecommendation()``` ***asynchronous*** Recommendation algorithm that checks type of application (AngularJS, Angular, or hybrid), checks if sloc is under the rewriteThreshold, and checks if passes the ngUpgrade requirements. Returns a recommendation and preparation report. 
+
+### Built With
+
+* [node-glob](https://www.npmjs.com/package/glob)
+* [parse-gitignore](https://www.npmjs.com/package/parse-gitignore)
+* [node-sloc](https://www.npmjs.com/package/node-sloc)
+* [readline-sync](https://www.npmjs.com/package/readline-sync)
+
+## Authors
+
+**Elana Olson** - [ellamaolson](https://github.com/ellamaolson)
+**Calvin Cuong**
+**Sara Akhtar**
+**Sri Devi**
+**Ziyun He**
+
+
+## License 
+
+Use of this source code is governed by an MIT-style license.
+
+
+
+
+
