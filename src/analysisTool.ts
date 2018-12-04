@@ -15,7 +15,6 @@
 
 import * as fs from 'fs';
 import {TypescriptParser} from "typescript-parser";
-
 const nodesloc = require('node-sloc');
 const gitignore = require('parse-gitignore');
 const glob = require('glob');
@@ -66,6 +65,7 @@ export class AnalysisTool {
                 console.error("Error 1: ", err);
             })
             .then(report => {
+                this.generateJSON(report);
                 console.log(this.runAppStatistics());
                 console.log(this.runRecommendation(report));
                 console.log("rewriteThreshold: " + Math.round(this.analysisDetails.rewriteThreshold) + ", sloc: " + this.analysisDetails.linesOfCode + "\n");
@@ -73,6 +73,16 @@ export class AnalysisTool {
             .catch(err => {
                 console.error("Error 2: ", err);
             });
+    }
+
+    /**
+     * 
+     * @param report Add Data into the JSON file
+     */
+    generateJSON(report: string ) {
+        // First, clear the JSON
+        this.runAppStatistics()
+        this.runRecommendation(report)
     }
 
     /**
@@ -213,7 +223,7 @@ export class AnalysisTool {
 
     checkFileForTsCode(fileName: string, fileData: string) {
         parser.parseSource(fileData).then(function(data) {
-            console.log(data);
+            // console.log(data);
         });
         // let tsAST = this.createTsAST(fileData);
 
