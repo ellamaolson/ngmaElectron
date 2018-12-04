@@ -1,12 +1,6 @@
-// Default button from <input type = "file">
 const realFileButton = document.getElementById("real-file");
-
-// Bootstrap button connected to realFileButton
 const customButton = document.getElementById("custom-button");
-
-// Displays file name
 const customText = document.getElementById("custom-text");
-
 const scanButton = document.getElementById("scanbutton");
 
 // Opens file manager
@@ -23,17 +17,9 @@ realFileButton.addEventListener("change", function () {
     if (realFileButton.value) {
         customText.innerHTML = realFileButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
         scanButton.style.display = "block";
-        alert('Upload Successful!');
+        alert('Uploaded Successfully');
         scanButton.addEventListener("click", function () {
-            const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
-            alert('Scan Button Pressed1asdsasd!');
-            var a = new AnalysisTool('./angular-phonecat-copy2');
-
-            var h = document.createElement('h1');
-            h.innerText = a.runAppStatistics();
-            document.body.appendChild(h);
-
-            alert('after!');
+            analyzeFile();
         });
     } else {
         customText.innerHTML = "No file chosen";
@@ -60,3 +46,14 @@ realFileButton.addEventListener("change", function () {
         return false;
     };
 }());
+
+//Run ngma on the directory then print results
+function analyzeFile() {
+    //ngma instance
+    const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
+    var analysis = new AnalysisTool('./angular-phonecat-copy2');
+
+    //print ngma results
+    var h = document.querySelector('.results-panel');
+    h.innerHTML = '<h1>' + analysis.runAppStatistics() + '</h1>';
+}

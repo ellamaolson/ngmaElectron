@@ -55,10 +55,8 @@ export class AnalysisTool {
      * @param rootpath user input original directory path
      */
     constructor(rootpath: string) {
-        alert('in the tools');
         this.analysisDetails.mapOfFilesToConvert = new Map < String, Array < String >> ();
         setTimeout(() => {}, 1000);
-        console.log('asd');
         this.countLinesOfCode(rootpath, this.buildPathIgnoringGlobs(rootpath))
             .then(sourceLines => {
                 this.analysisDetails.linesOfCode = sourceLines;
