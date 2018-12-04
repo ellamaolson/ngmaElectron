@@ -1,4 +1,7 @@
-import { app, BrowserWindow } from "electron";
+import {
+  app,
+  BrowserWindow
+} from "electron";
 import * as path from "path";
 
 let mainWindow: Electron.BrowserWindow;
@@ -12,6 +15,9 @@ function createWindow() {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "../index.html"));
+
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on("closed", () => {
@@ -46,5 +52,10 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
-import ngmaAnalyzer = require("./ngmaAnalyzer");
-ngmaAnalyzer;
+// import ngmaAnalyzer = require("./ngmaAnalyzer");
+// ngmaAnalyzer;
+// import { AnalysisTool } from './analysisTool'; //'ngma/analysisTool'
+// new AnalysisTool('./angular-phonecat-copy2');
+
+// const AnalysisTool = require('./analysisTool'); //'ngma/analysisTool'
+// new AnalysisTool('./angular-phonecat-copy2');

@@ -14,7 +14,9 @@
  */
 
 import * as fs from 'fs';
-import {TypescriptParser} from "typescript-parser";
+import {
+    TypescriptParser
+} from "typescript-parser";
 const nodesloc = require('node-sloc');
 const gitignore = require('parse-gitignore');
 const glob = require('glob');
@@ -53,8 +55,10 @@ export class AnalysisTool {
      * @param rootpath user input original directory path
      */
     constructor(rootpath: string) {
-        this.analysisDetails.mapOfFilesToConvert = new Map<String, Array<String>>();
-        setTimeout(() => { }, 1000);
+        alert('in the tools');
+        this.analysisDetails.mapOfFilesToConvert = new Map < String, Array < String >> ();
+        setTimeout(() => {}, 1000);
+        console.log('asd');
         this.countLinesOfCode(rootpath, this.buildPathIgnoringGlobs(rootpath))
             .then(sourceLines => {
                 this.analysisDetails.linesOfCode = sourceLines;
@@ -79,7 +83,7 @@ export class AnalysisTool {
      * 
      * @param report Add Data into the JSON file
      */
-    generateJSON(report: string ) {
+    generateJSON(report: string) {
         // First, clear the JSON
         this.runAppStatistics()
         this.runRecommendation(report)
@@ -92,17 +96,20 @@ export class AnalysisTool {
      */
     buildPathIgnoringGlobs(rootpath: string) {
         let ignoreGlobs = this.getGlobsFromGitignore(rootpath);
-        let filesWithoutIgnores = glob.sync("**", { ignore: ignoreGlobs, cwd: rootpath });
+        let filesWithoutIgnores = glob.sync("**", {
+            ignore: ignoreGlobs,
+            cwd: rootpath
+        });
         this.analysisDetails.totalFilesOrFolderCount = filesWithoutIgnores.length;
         return filesWithoutIgnores;
     }
 
     /**
-    * Parses .gitignore file into an array of ignoreGlobs and appends default ignoreGlobs 
-    * to the array. Filters out patterns starting with ! from the ignoreGlobs array
-    * because ! means to never ignore. Returns the globs to ignore.
-    * @param rootpath original directory path
-    */
+     * Parses .gitignore file into an array of ignoreGlobs and appends default ignoreGlobs 
+     * to the array. Filters out patterns starting with ! from the ignoreGlobs array
+     * because ! means to never ignore. Returns the globs to ignore.
+     * @param rootpath original directory path
+     */
     getGlobsFromGitignore(rootpath: string): string[] {
         let allIgnoreGlobs: string[] = [];
         let defaultIgnoreGlobs = [
@@ -140,8 +147,8 @@ export class AnalysisTool {
      * in node_modules and other ignored files. Returns a promise that resolves to sloc.
      * @param rootPath original directory path
      * @param filteredFilePaths filtered filesystem buildPathIgnoringGlobs() returns
-    */
-    async countLinesOfCode(rootPath: string, filteredFilePaths: string[]): Promise<any> {
+     */
+    async countLinesOfCode(rootPath: string, filteredFilePaths: string[]): Promise < any > {
         return new Promise((resolve, reject) => {
             const promisesINeedResolvedForMeToBeDone = [];
 
@@ -155,14 +162,14 @@ export class AnalysisTool {
                 };
                 promisesINeedResolvedForMeToBeDone.push(
                     nodesloc(options)
-                        .then((results: any) => {
-                            lines += results.sloc.sloc || 0;
-                        })
-                        .catch((err: any) => {
-                            console.log("Is there");
-                            console.error(err);
-                            reject(err);
-                        })
+                    .then((results: any) => {
+                        lines += results.sloc.sloc || 0;
+                    })
+                    .catch((err: any) => {
+                        console.log("Is there");
+                        console.error(err);
+                        reject(err);
+                    })
                 );
             }
             Promise.all(promisesINeedResolvedForMeToBeDone).then(() => resolve(lines));
@@ -222,13 +229,13 @@ export class AnalysisTool {
     }
 
     checkFileForTsCode(fileName: string, fileData: string) {
-        parser.parseSource(fileData).then(function(data) {
+        parser.parseSource(fileData).then(function (data) {
             // console.log(data);
         });
         // let tsAST = this.createTsAST(fileData);
 
         // if (tsAST) {
-            // console.log(tsAST);
+        // console.log(tsAST);
         // }
     }
 
@@ -315,7 +322,7 @@ export class AnalysisTool {
         }
     }
 
-    pushValueOnKey(map: Map<any, any>, key: string, value: string) {
+    pushValueOnKey(map: Map < any, any > , key: string, value: string) {
         if (map.has(key)) {
             let values = map.get(key);
             values.push(value);
@@ -327,11 +334,11 @@ export class AnalysisTool {
     }
 
     /**
-    * Creates the anti-pattern report and calculates the rewriteThreshold runRecommendation() uses.
-    * Each time an anti-pattern is found, general instructions and files needing corrections 
-    * are appended to the preparation report. Returns a promise that resolves to the preparation report. 
-    */
-    private runAntiPatternReport(): Promise<any> {
+     * Creates the anti-pattern report and calculates the rewriteThreshold runRecommendation() uses.
+     * Each time an anti-pattern is found, general instructions and files needing corrections 
+     * are appended to the preparation report. Returns a promise that resolves to the preparation report. 
+     */
+    private runAntiPatternReport(): Promise < any > {
         let preparationReport = "";
 
         if (this.analysisDetails.rootScope) {
@@ -347,13 +354,13 @@ export class AnalysisTool {
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
         if (this.analysisDetails.jsFileCount > 0) {
-            preparationReport += "\n  * App contains " + this.analysisDetails.jsFileCount + " JavaScript files that need to be converted to TypeScript."
-                + "\n      To learn more, visit https://angular.io/guide/upgrade#migrating-to-typescript";
+            preparationReport += "\n  * App contains " + this.analysisDetails.jsFileCount + " JavaScript files that need to be converted to TypeScript." +
+                "\n      To learn more, visit https://angular.io/guide/upgrade#migrating-to-typescript";
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
         if (this.analysisDetails.controllersCount > 0) {
-            preparationReport += "\n  * App contains " + this.analysisDetails.controllersCount
-                + " controllers that need to be converted to AngularJS components.\n      To learn more, visit https://docs.angularjs.org/guide/component";
+            preparationReport += "\n  * App contains " + this.analysisDetails.controllersCount +
+                " controllers that need to be converted to AngularJS components.\n      To learn more, visit https://docs.angularjs.org/guide/component";
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
 
@@ -369,19 +376,19 @@ export class AnalysisTool {
 
     public runAppStatistics(): string {
         let report = "\x1b[1m\nApp Statistics\x1b[0m";
-        if (this.analysisDetails.controllersCount > 0
-            || this.analysisDetails.componentCount > 0
-            || this.analysisDetails.jsFileCount > 0
-            || this.analysisDetails.tsFileCount > 0) {
-            report += "\n  * Complexity: " + this.analysisDetails.controllersCount + " controllers, "
-                + this.analysisDetails.componentCount + " AngularJS components, " +
-                + this.analysisDetails.jsFileCount + " JavaScript files, and "
-                + this.analysisDetails.tsFileCount + " Typescript files.";
+        if (this.analysisDetails.controllersCount > 0 ||
+            this.analysisDetails.componentCount > 0 ||
+            this.analysisDetails.jsFileCount > 0 ||
+            this.analysisDetails.tsFileCount > 0) {
+            report += "\n  * Complexity: " + this.analysisDetails.controllersCount + " controllers, " +
+                this.analysisDetails.componentCount + " AngularJS components, " +
+                +this.analysisDetails.jsFileCount + " JavaScript files, and " +
+                this.analysisDetails.tsFileCount + " Typescript files.";
         }
-        report += "\n  * App size: " + this.analysisDetails.linesOfCode + " lines of code"
-            + "\n  * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders, "
-            + this.analysisDetails.relevantFilesOrFolderCount + " relevant files/folders"
-            + "\n  * AngularJS Patterns: ";
+        report += "\n  * App size: " + this.analysisDetails.linesOfCode + " lines of code" +
+            "\n  * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders, " +
+            this.analysisDetails.relevantFilesOrFolderCount + " relevant files/folders" +
+            "\n  * AngularJS Patterns: ";
         if (this.analysisDetails.rootScope) {
             report += " $rootScope, ";
         }
@@ -422,8 +429,8 @@ export class AnalysisTool {
         //Rewriting from scratch
         if (this.analysisDetails.rewriteThreshold >= this.analysisDetails.linesOfCode) {
             if (this.typeOfApplication() == "hybrid") {
-                recommendation += "\x1b[34mEven though you have already begun making a hybrid application with"
-                    + " both AngularJS and Angular, the simplest solution is to rewrite your application from scratch.\n\x1b[0m";;
+                recommendation += "\x1b[34mEven though you have already begun making a hybrid application with" +
+                    " both AngularJS and Angular, the simplest solution is to rewrite your application from scratch.\n\x1b[0m";;
             } else {
                 recommendation += "\x1b[34mThe simplest solution is to rewrite your application from scratch.\n\x1b[0m";
             }
@@ -442,9 +449,9 @@ export class AnalysisTool {
                 }
             } else {
                 if (this.typeOfApplication() == "hybrid") {
-                    recommendation += "\x1b[34mEven though you have already begun making a hybrid application with"
-                        + " both AngularJS and Angular, your app does not pass the necessary requirements to use ngUpgrade.\n";
-                        + "Please follow these preparation steps in the files identified before migrating with ngUpgrade.\x1b[0m";
+                    recommendation += "\x1b[34mEven though you have already begun making a hybrid application with" +
+                        " both AngularJS and Angular, your app does not pass the necessary requirements to use ngUpgrade.\n"; +
+                    "Please follow these preparation steps in the files identified before migrating with ngUpgrade.\x1b[0m";
                 } else {
                     recommendation += "\x1b[34mPlease follow these preparation steps in the files identified before migrating with ngUpgrade.\x1b[0m";
                 }
