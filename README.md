@@ -2,6 +2,8 @@
 
 ngMigration Assistant Electron is an easy-to-use desktop app that scans an AngularJS application and recommends how to migrate to Angular. 
 
+<img width="796" alt="screen shot 2018-12-03 at 11 00 30 pm" src="https://user-images.githubusercontent.com/27384475/49424392-47919380-f74f-11e8-9e13-133115274fa6.png">
+
 ## To Use
 
 To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
@@ -50,9 +52,13 @@ Runs the analysis on the provided directory and returns a recommendation on whic
 ## Authors
 
 **Elana Olson** - [ellamaolson](https://github.com/ellamaolson)
+
 **Calvin Cuong**
+
 **Sara Akhtar**
+
 **Sri Devi**
+
 **Ziyun He**
 
 
