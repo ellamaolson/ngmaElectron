@@ -45,7 +45,8 @@ export class AnalysisTool {
         controllersCount: 0,
         componentCount: 0,
         linesOfCode: 0,
-        mapOfFilesToConvert: new Map()
+        mapOfFilesToConvert: new Map(),
+        antiPatternReport: new Array(),
     };
 
     /**
@@ -55,8 +56,14 @@ export class AnalysisTool {
      * @param rootpath user input original directory path
      */
     constructor(rootpath: string) {
-        this.analysisDetails.mapOfFilesToConvert = new Map < String, Array < String >> ();
+        console.log("ROOTPATH: " + rootpath);
+        this.analysisDetails.mapOfFilesToConvert = new Map <String, Array<String>> ();
         setTimeout(() => {}, 1000);
+        this.promiseSchedule(rootpath, function(){});
+    }
+
+    promiseSchedule(rootpath: string, callback: Function) {
+        console.log("ROOTPATH 2: " + rootpath);
         this.countLinesOfCode(rootpath, this.buildPathIgnoringGlobs(rootpath))
             .then(sourceLines => {
                 this.analysisDetails.linesOfCode = sourceLines;
@@ -67,24 +74,18 @@ export class AnalysisTool {
                 console.error("Error 1: ", err);
             })
             .then(report => {
-                this.generateJSON(report);
+                this.runAppStatistics();
                 console.log(this.runAppStatistics());
-                console.log(this.runRecommendation(report));
+                this.analysisDetails.antiPatternReport = report;
+                console.log(report);
+                this.runRecommendation();
+                console.log(this.runRecommendation());
                 console.log("rewriteThreshold: " + Math.round(this.analysisDetails.rewriteThreshold) + ", sloc: " + this.analysisDetails.linesOfCode + "\n");
+                callback();
             })
             .catch(err => {
                 console.error("Error 2: ", err);
             });
-    }
-
-    /**
-     * 
-     * @param report Add Data into the JSON file
-     */
-    generateJSON(report: string) {
-        // First, clear the JSON
-        this.runAppStatistics()
-        this.runRecommendation(report)
     }
 
     /**
@@ -336,37 +337,37 @@ export class AnalysisTool {
      * Each time an anti-pattern is found, general instructions and files needing corrections 
      * are appended to the preparation report. Returns a promise that resolves to the preparation report. 
      */
-    private runAntiPatternReport(): Promise < any > {
-        let preparationReport = "";
+    private runAntiPatternReport(): Promise <any> {
+        let preparationReport = new Array();
 
         if (this.analysisDetails.rootScope) {
-            preparationReport += "\n  * App contains $rootScope, please refactor rootScope into services.";
+            preparationReport.push ("  * App contains $rootScope, please refactor rootScope into services.");
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
         if (this.analysisDetails.compile) {
-            preparationReport += "\n  * App contains $compile, please rewrite compile to eliminate dynamic feature of templates.";
+            preparationReport.push("  * App contains $compile, please rewrite compile to eliminate dynamic feature of templates.");
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
         if (!this.analysisDetails.hasUnitTest) {
-            preparationReport += "\n  * App does not contain unit tests, please include unit tests.";
+            preparationReport.push("  * App does not contain unit tests, please include unit tests.");
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
         if (this.analysisDetails.jsFileCount > 0) {
-            preparationReport += "\n  * App contains " + this.analysisDetails.jsFileCount + " JavaScript files that need to be converted to TypeScript." +
-                "\n      To learn more, visit https://angular.io/guide/upgrade#migrating-to-typescript";
+            preparationReport.push("  * App contains " + this.analysisDetails.jsFileCount + " JavaScript files that need to be converted to TypeScript." +
+                "To learn more, visit https://angular.io/guide/upgrade#migrating-to-typescript");
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
         if (this.analysisDetails.controllersCount > 0) {
-            preparationReport += "\n  * App contains " + this.analysisDetails.controllersCount +
-                " controllers that need to be converted to AngularJS components.\n      To learn more, visit https://docs.angularjs.org/guide/component";
+            preparationReport.push("  * App contains " + this.analysisDetails.controllersCount +
+                " controllers that need to be converted to AngularJS components. To learn more, visit https://docs.angularjs.org/guide/component");
             this.analysisDetails.rewriteThreshold *= this.CODE_LIMIT_MULTIPLIER;
         }
 
         if (this.analysisDetails.mapOfFilesToConvert.size > 0) {
-            preparationReport += "\x1b[1m\n\nFiles that contain AngularJS patterns and need to be modified:\x1b[0m";
+            preparationReport.push("Files that contain AngularJS patterns and need to be modified:");
             let index = 1;
             for (let key of this.analysisDetails.mapOfFilesToConvert.keys()) {
-                preparationReport += "\n" + index++ + ".  " + key + " --> Patterns found: " + this.analysisDetails.mapOfFilesToConvert.get(key);
+                preparationReport.push("" + index++ + ".  " + key + " --> Patterns found: " + this.analysisDetails.mapOfFilesToConvert.get(key));
             }
         }
         return Promise.resolve(preparationReport);
@@ -381,18 +382,18 @@ export class AnalysisTool {
             this.analysisDetails.componentCount > 0 ||
             this.analysisDetails.jsFileCount > 0 ||
             this.analysisDetails.tsFileCount > 0) {
-            
+
             reportArray[1] = " * Complexity: " + this.analysisDetails.controllersCount + " controllers, " +
-            this.analysisDetails.componentCount + " AngularJS components, " +
-            +this.analysisDetails.jsFileCount + " JavaScript files, and " +
-            this.analysisDetails.tsFileCount + " Typescript files.";
+                this.analysisDetails.componentCount + " AngularJS components, " +
+                +this.analysisDetails.jsFileCount + " JavaScript files, and " +
+                this.analysisDetails.tsFileCount + " Typescript files.";
         }
         reportArray[2] = " * App size: " + this.analysisDetails.linesOfCode + " lines of code";
         reportArray[3] = " * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders,";
         reportArray[4] = " * AngularJS Patterns: "
 
         if (this.analysisDetails.rootScope) {
-            reportArray[4] +=  " $rootScope, "
+            reportArray[4] += " $rootScope, "
         }
         if (this.analysisDetails.compile) {
             reportArray[4] += " $compile, "
@@ -415,47 +416,51 @@ export class AnalysisTool {
      * hybrid), checks if sloc is under the rewriteThreshold, and checks if passes the 
      * ngUpgrade requirements. Returns a recommendation with a preparation report only 
      * when needed. 
+     * Returns an array of the recommendations 
      * @param preparationReport preparation instructions for upgrading
      */
-    public runRecommendation(preparationReport: string): string {
-        let recommendation = "\x1b[1m\nYour Recommendation\n\x1b[0m";
+    public runRecommendation(): string[] {
+        let recommendation: string[] = [];
+        recommendation[0] = "Your Recommendation";
         if (this.typeOfApplication() == "angular") {
-            recommendation += "\x1b[34mThis is already an Angular application. You do not need to migrate.\n\x1b[0m";
+            recommendation[1] = "This is already an Angular application. You do not need to migrate.";
             return recommendation;
         }
+
         //Rewriting from scratch
         if (this.analysisDetails.rewriteThreshold >= this.analysisDetails.linesOfCode) {
             if (this.typeOfApplication() == "hybrid") {
-                recommendation += "\x1b[34mEven though you have already begun making a hybrid application with" +
-                    " both AngularJS and Angular, the simplest solution is to rewrite your application from scratch.\n\x1b[0m";;
+                recommendation[1] = "Even though you have already begun making a hybrid application with" +
+                    " both AngularJS and Angular, the simplest solution is to rewrite your application from scratch.";;
             } else {
-                recommendation += "\x1b[34mThe simplest solution is to rewrite your application from scratch.\n\x1b[0m";
+                recommendation[1] = "The simplest solution is to rewrite your application from scratch.";
             }
+
             if (!this.analysisDetails.hasUnitTest) {
-                recommendation += "Please include unit tests in your new Angular application.\n";
+                recommendation[2] = "Please include unit tests in your new Angular application.";
             }
         } else {
             if (this.passesNgUpgradeRequirements()) {
-                recommendation += "\x1b[34mYou have passed the necessary requirements and can use ngUpgrade as your migration path.\n\x1b[0m";
+                recommendation[1] = "You have passed the necessary requirements and can use ngUpgrade as your migration path.";
                 if (this.analysisDetails.angularElement == true) {
-                    recommendation += "Continue using Angular Elements for components.";
+                    recommendation[2] = "Continue using Angular Elements for components.";
                 } else if (this.analysisDetails.uiRouter == true) {
-                    recommendation += "Use the hybrid ui-router in addition.";
+                    recommendation[2] = "Use the hybrid ui-router in addition.";
                 } else if (this.analysisDetails.angularjsRouter) {
-                    recommendation += "Use the hyrbid AngularJS and Angular router in addition.";
+                    recommendation[2] = "Use the hyrbid AngularJS and Angular router in addition.";
                 }
             } else {
                 if (this.typeOfApplication() == "hybrid") {
-                    recommendation += "\x1b[34mEven though you have already begun making a hybrid application with" +
-                        " both AngularJS and Angular, your app does not pass the necessary requirements to use ngUpgrade.\n"; +
-                    "Please follow these preparation steps in the files identified before migrating with ngUpgrade.\x1b[0m";
+                    recommendation[1] = "Even though you have already begun making a hybrid application with" +
+                        " both AngularJS and Angular, your app does not pass the necessary requirements to use ngUpgrade."; +
+                    "Please follow these preparation steps in the files identified before migrating with ngUpgrade.";
                 } else {
-                    recommendation += "\x1b[34mPlease follow these preparation steps in the files identified before migrating with ngUpgrade.\x1b[0m";
+                    recommendation[1] = "Please follow these preparation steps in the files identified before migrating with ngUpgrade.";
                 }
-                recommendation += preparationReport + "\n";
+                //recommendation[2] = preparationReport;
             }
         }
-        return recommendation + "\x1b[34m\nHead to \x1b[1mngMigration-Forum to understand this migration approach.\n\x1b[1mhttps://github.com/angular/ngMigration-Forum/wiki\n\x1b[0m";
+        return recommendation;
     }
 
     typeOfApplication(): string {
