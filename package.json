@@ -22,8 +22,7 @@
   "devDependencies": {
     "electron": "^3.0.10",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3",
-    "jquery": "^3.3.1"
+    "typescript": "^2.9.2"
   },
   "dependencies": {
     "glob": "^7.1.2",
@@ -32,7 +31,6 @@
     "ts-node": "^7.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
     "tslint": "^5.10.0",
-    "typescript": "^2.9.2",
     "typescript-parser": "^2.6.1",
     "electron-drag-drop": "^1.1.0"
   }
