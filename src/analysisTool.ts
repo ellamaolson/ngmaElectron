@@ -189,9 +189,6 @@ export class AnalysisTool {
      * @param rootPath original directory path
      */
     private runAnalysis(rootpath: string) {
-        const list = fs.readdirSync(rootpath);
-        let currentPath: string = "";
-
         for (let fileOrFolder of this.buildPathIgnoringGlobs(rootpath)) {
             let currentPath = rootpath + "/" + fileOrFolder;
             if (fs.lstatSync(currentPath).isFile()) {
@@ -201,15 +198,68 @@ export class AnalysisTool {
         }
     }
 
+    /**
+     * Calls tests on each file in the filtered filesystem to looks for anti-patterns,
+     * Angular version, and additional practices.
+     * @param currentPath
+     */
+    async testFile(currentPath: string) {
+        let tests = [
+            (filename: string, data: string) => this.checkFileForRootScope(filename, data),
+            (filename: string, data: string) => this.checkFileForCompile(filename, data),
+            (filename: string, data: string) => this.checkFileForAngularElement(filename, data),
+            (filename: string, data: string) => this.checkFileForRouter(filename, data),
+            (filename: string, data: string) => this.checkFileForUnitTests(filename, data),
+            (filename: string, data: string) => this.checkAngularVersion(filename, data),
+            (filename: string, data: string) => this.checkFileForScriptingLanguage(filename, data),
+            (filename: string, data: string) => this.checkFileForComponent(filename, data)
+        ];
+
+        if (currentPath.substr(-3) === '.js' || this.fileHasTsExtension(currentPath) || currentPath.substr(-5) === '.html' || currentPath.substr(-5) === '.json') {
+            this.analysisDetails.relevantFilesOrFolderCount++;
+            for (let i = 0; i < tests.length; i++) {
+                tests[i](currentPath, fs.readFileSync(currentPath, "utf8"));
+            }
+        }
+    }
+
     checkTypeForAST(currentPath: string) {
         if (this.fileHasTsExtension(currentPath)) {                  // If file is TypeScript ==> TS Parser
             this.analysisDetails.tsFileCount++;
             this.testFileUsingTsAST(currentPath);
-        } else if (currentPath.substr(-5) === '.html') {                             // If file is HTML --> HTML Parser --> Check if there's JS
-
         } else {
-            // this.testFile(currentPath);
+            let scriptContent;
+            if (currentPath.substr(-5) === '.html') {                             // If file is HTML --> HTML Parser --> Check if there's JS
+                const $ = cheerio.load(fs.readFileSync(currentPath, "utf8"));
+                scriptContent = $('script').html();
+            } else {
+                scriptContent = fs.readFileSync(currentPath, "utf8");
+            }
+            // this.testJSFileUsingEsprimaParser(scriptContent);
         }
+    }
+
+
+    testJSFileUsingEsprimaParser(fileData: string) {
+        // fileData = this.trimShebang(fileData);  // we always have to trim the file first before scan
+        let tree = esprima.parse(fileData);
+        walk(tree, function ( node:any ) {
+            if(node.type === 'Identifier') {
+                if (node.name === '$rootScope') { // find the rootScope
+                    //this.analysisDetails.rootScope = true;
+                    //this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, filename, " $rootScope");
+                } else if (node.name === 'createCustomElement') { // find the createCustomElement
+                    // find
+                } else if (node.name === 'controller') { // find the controller
+                    // find
+                } else if (node.name === 'component') { // find the component
+                    // find
+                }
+            }
+            if(node.type === 'Literal' && node.value === '@angular/core') {
+                // find the @angular/core
+            }
+        });
     }
 
     fileHasTsExtension(filename: string): boolean {
@@ -345,6 +395,8 @@ export class AnalysisTool {
         else if (value === " controller") this.analysisDetails.controllersCount++;
         this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, fileName, value);
     }
+
+
 
     checkFileForRootScope(filename: string, fileData: string) {
         if (filename.substr(-7, 4) != 'spec' && !filename.includes('test')) {
