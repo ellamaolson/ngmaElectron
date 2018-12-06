@@ -14,13 +14,21 @@
  */
 
 import * as fs from 'fs';
-import {
-    TypescriptParser
-} from "typescript-parser";
+import {Project, ScriptTarget} from "ts-simple-ast";
+
 const nodesloc = require('node-sloc');
 const gitignore = require('parse-gitignore');
 const glob = require('glob');
-const parser = new TypescriptParser();
+const project = new Project({
+    compilerOptions: {
+        target: ScriptTarget.ES3
+    }
+});
+project.addExistingSourceFiles("**/*.ts");
+
+const cheerio = require('cheerio');
+const esprima = require('esprima');
+const walk = require( 'esprima-walk' );
 
 export class AnalysisTool {
 
@@ -181,61 +189,161 @@ export class AnalysisTool {
      * @param rootPath original directory path
      */
     private runAnalysis(rootpath: string) {
-        // const list = fs.readdirSync(rootpath);
-        // let currentPath: string = "";
+        const list = fs.readdirSync(rootpath);
+        let currentPath: string = "";
 
         for (let fileOrFolder of this.buildPathIgnoringGlobs(rootpath)) {
             let currentPath = rootpath + "/" + fileOrFolder;
             if (fs.lstatSync(currentPath).isFile()) {
-                this.testFile(currentPath);
+                // this.testFile(currentPath);
+                this.checkTypeForAST(currentPath);
             }
         }
     }
 
-    /**
-     * Calls tests on each file in the filtered filesystem to looks for anti-patterns,
-     * Angular version, and additional practices. 
-     * @param currentPath 
-     */
-    testFile(currentPath: string) {
-        let tests = [
-            (filename: string, data: string) => this.checkFileForRootScope(filename, data),
-            (filename: string, data: string) => this.checkFileForCompile(filename, data),
-            (filename: string, data: string) => this.checkFileForAngularElement(filename, data),
-            (filename: string, data: string) => this.checkFileForRouter(filename, data),
-            (filename: string, data: string) => this.checkFileForUnitTests(filename, data),
-            (filename: string, data: string) => this.checkAngularVersion(filename, data),
-            (filename: string, data: string) => this.checkFileForScriptingLanguage(filename, data),
-            (filename: string, data: string) => this.checkFileForTsCode(filename, data),
-            (filename: string, data: string) => this.checkFileForComponent(filename, data),
-        ];
-        if (currentPath.substr(-3) === '.js' || this.fileHasTsExtension(currentPath) || currentPath.substr(-5) === '.html' || currentPath.substr(-5) === '.json') {
-            this.analysisDetails.relevantFilesOrFolderCount++;
-            for (let test of tests) {
-                test(currentPath, fs.readFileSync(currentPath, "utf8"));
-            }
+    checkTypeForAST(currentPath: string) {
+        if (this.fileHasTsExtension(currentPath)) {                  // If file is TypeScript ==> TS Parser
+            this.analysisDetails.tsFileCount++;
+            this.testFileUsingTsAST(currentPath);
+        } else if (currentPath.substr(-5) === '.html') {                             // If file is HTML --> HTML Parser --> Check if there's JS
+
+        } else {
+            // this.testFile(currentPath);
         }
-    }
-
-    createTsAST(fileData: string) {
-
-        // console.log(parser.parseSource(fileData));
-        // return ;
     }
 
     fileHasTsExtension(filename: string): boolean {
         return filename.endsWith('.ts') && !filename.endsWith('.d.ts');
     }
 
-    checkFileForTsCode(fileName: string, fileData: string) {
-        parser.parseSource(fileData).then(function (data) {
-            // console.log(data);
-        });
-        // let tsAST = this.createTsAST(fileData);
+    /**
+     * Test TypeScript File
+     * @param currentPath
+     */
+    testFileUsingTsAST(currentPath: string) {
+        let tests = [
+            (filename: string, data: string) => this.checkTSFileForRootScope(filename, data),
+            (filename: string, data: string) => this.checkTSFileForCompile(filename, data),
+            (filename: string, data: string) => this.checkTSFileForAngularElement(filename, data),
+            (filename: string, data: string) => this.checkTSFileForComponent(filename, data)
+        ];
 
-        // if (tsAST) {
-        // console.log(tsAST);
-        // }
+        for (let i = 0; i < tests.length; i++) tests[i](currentPath, fs.readFileSync(currentPath, "utf8"));
+    }
+
+
+    checkTSFileForRootScope(fileName: string, fileData: string) {
+        const sourceFile = project.getSourceFileOrThrow(fileName);
+
+        const classesList = sourceFile.getClasses();
+        const variableDeclarationList = sourceFile.getVariableDeclarations();
+
+        // Check if it's a variable Declaration
+        for (let i = 0; i < variableDeclarationList.length - 1; i++) {
+            if (variableDeclarationList[i].getName() === "$rootScope") {
+                this.addFileToSpecificMap(fileName, " $rootScope");
+            }
+        }
+
+        for (let i = 0; i < classesList.length; i++) {
+            let functionList = classesList[i].getMethods();
+            let propertyList = classesList[i].getProperties();
+
+            // Check if it's defined in a class
+            for (let j = 0; j < propertyList.length - 1; j++) {
+                if (propertyList[j].getName() === "$rootScope")
+                    this.addFileToSpecificMap(fileName, " $rootScope");
+            }
+
+            for (let j = 0; j < functionList.length - 1; j++) {
+
+                // Check if it's used in a body of a function
+                for (let k = 0; k < functionList[j].getVariableDeclarations().length - 1; k++) {
+                    if (functionList[j].getVariableDeclarations()[k].getName() === "$rootScope") {
+                        this.addFileToSpecificMap(fileName, " $rootScope");
+                    }
+                }
+
+                // Check if it's a variable in a parameter
+                if (functionList[j].getParameter("$rootScope")) {
+                    this.addFileToSpecificMap(fileName, " $rootScope");
+                }
+            }
+        }
+    }
+
+    checkTSFileForCompile(fileName: string, fileData: string) {
+        const sourceFile = project.getSourceFileOrThrow(fileName);
+        const classesList = sourceFile.getClasses();
+
+        for (let i = 0; i < classesList.length; i++) {
+            let functionList = classesList[i].getMethods();
+            for (let j = 0; j < functionList.length - 1; j++) {
+                if (functionList[j].getName() === "compile") {
+                    this.addFileToSpecificMap(fileName, " $compile")
+                }
+            }
+        }
+    }
+
+    checkTSFileForAngularElement(fileName: string, fileData: string) {
+        const sourceFile = project.getSourceFileOrThrow(fileName);
+        const classesList = sourceFile.getClasses();
+        const importList = sourceFile.getImportDeclarations();
+
+        for (let i = 0; i < importList.length - 1; i++) {
+            for (let j = 0; j < importList[i].getNamedImports().length; j++) {
+                if (importList[i].getNamedImports()[j].getName() === "createCustomElement") {
+                    this.analysisDetails.angularElement = true;
+                }
+            }
+        }
+
+        for (let i = 0; i < classesList.length; i++) {
+            for (let j = 0; j < classesList[i].getConstructors().length; j++) {
+                if (classesList[i].getConstructors()[j].getNamespace("createCustomElement")) {
+                    this.analysisDetails.angularElement = true;
+                }
+            }
+        }
+    }
+
+    checkTSFileForComponent(fileName: string, fileData: string) {
+        const sourceFile = project.getSourceFileOrThrow(fileName);
+        const classesList = sourceFile.getClasses();
+
+        // Check if .component + .controller
+        const temp1 = sourceFile.getStatements();
+        for (let i = 0; i < temp1.length; i++) {
+            temp1[i].forEachDescendant((node) => {
+                if (node.getKindName() === "PropertyAccessExpression") {
+                    node.forEachDescendant((anotherNode) => {
+                        if (anotherNode.getFullText() === "controller") {
+                            console.log("found .controller ");
+                            this.addFileToSpecificMap(fileName, " controller");
+                        } else if (anotherNode.getFullText() === "component") {
+                            console.log("found .component" + " " + sourceFile.getBaseName());
+                            this.analysisDetails.componentCount++;
+                        }
+                    });
+                }
+            });
+        }
+
+        // Check if @component --> Check for decorator
+        for (let i = 0; i < classesList.length; i++) {
+            if (classesList[i].getDecorator("Component")) {
+                this.analysisDetails.componentCount++;
+            }
+        }
+    }
+
+
+    addFileToSpecificMap(fileName: string, value: string) {
+        if (value === " $rootScope") this.analysisDetails.rootScope = true;
+        else if (value === " $compile") this.analysisDetails.compile = true;
+        else if (value === " controller") this.analysisDetails.controllersCount++;
+        this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, fileName, value);
     }
 
     checkFileForRootScope(filename: string, fileData: string) {
