@@ -54,7 +54,7 @@ realFileButton.addEventListener("change", function () {
 function analyzeFile() {
     //ngma instance
     const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
-    var dir = '/Users/elana/Documents/Angular_Projects/new_folder/new-electron-quick-start-typescript/angular-phonecat-copy2';
+    var dir = './angular-phonecat-copy2';
     var analysis = new AnalysisTool(dir);
     analysis.promiseSchedule(dir, function(){
         //print ngma results
