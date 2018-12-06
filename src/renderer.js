@@ -48,12 +48,13 @@ function analyzeFile() {
 
     const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
     var dir = '../angular-phonecat';
-
+    // var dir = '/Users/elana/Documents/Angular_Projects/new_folder/new-electron-quick-start-typescript/angular-phonecat-copy2';
     var analysis = new AnalysisTool(dir);
 
     analysis.promiseSchedule(dir, function(){
     //     alert(3);
         //print ngma results
+<<<<<<< HEAD
         var h = document.querySelector('.results-panel');
         var report = '<h2>' + "Welcome to ngMigration Assistant!" + '</h2>'
             + '<br>' + "Here are the criteria I am scanning for in your application:"
@@ -61,6 +62,25 @@ function analyzeFile() {
             + '<br>' + "  * AngularJS patterns" + '<br>' + "  * AngularJS version" + '<br>'
             + "  * Preparation necessary for migration" + '<br>'
             + "To learn more about criteria selection, visit https://angular.io/guide/upgrade#preparation." + '<br>';
+=======
+    var h = document.querySelector('.results-panel');
+    var report = '<h2>' + "Welcome to ngMigration Assistant!" + '</h2>'
+        + '<br>' + "Here are the criteria I am scanning for in your application:"
+        + '<br>' + "  * Complexity" + '<br>' + "  * App size in lines of code and amount of relevant files and folders"
+        + '<br>' + "  * AngularJS patterns" + '<br>' + "  * AngularJS version" + '<br>'
+        + "  * Preparation necessary for migration" + '<br>' 
+        + "To learn more about criteria selection, visit https://angular.io/guide/upgrade#preparation." + '<br>';
+    
+    var blah = analysis.runAppStatistics();
+    console.log('BLAh: ' + blah);
+    blah.forEach(function (element) {
+    if (element == analysis.runAppStatistics()[0]) {
+        report += '<br><h4>' + element + '</h4>';
+    } else {
+        report += element + " " + '<br>' ;
+    }
+    });
+>>>>>>> dd591037009a7a9b46c4a396f498881ff388fcfe
 
         var blah = analysis.runAppStatistics();
         console.log('BLAh: ' + blah);
