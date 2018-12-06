@@ -1,6 +1,6 @@
 # ngMigration Assistant Desktop App
 
-ngMigration Assistant Electron is an easy-to-use desktop app that scans an AngularJS application and recommends how to migrate to Angular. 
+ngMigration Assistant Electron is an easy-to-use desktop app that scans an AngularJS application and recommends how to migrate to Angular. Click <a href = "./ngmaDesktop.app" download>here</a> to download ngmaDesktop.
 
 <img width="796" alt="screen shot 2018-12-03 at 11 00 30 pm" src="https://user-images.githubusercontent.com/27384475/49424392-47919380-f74f-11e8-9e13-133115274fa6.png">
 
