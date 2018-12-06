@@ -68,9 +68,9 @@ function analyzeFile() {
     
     var blah = analysis.runAppStatistics();
     console.log('BLAh: ' + blah);
-    blah.forEach(function (element, asd) {
+    blah.forEach(function (element) {
     if (element == analysis.runAppStatistics()[0]) {
-        report += '<br><h4>' + element + " " + asd + '</h4>';
+        report += '<br><h4>' + element + '</h4>';
     } else {
         report += element + " " + asd + '<br>' ;
     }
