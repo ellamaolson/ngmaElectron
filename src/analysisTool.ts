@@ -13,7 +13,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import * as fs from 'fs';
+import * as fs from "fs";
+import hey from "./analysisData.json";
+
 import {TypescriptParser} from "typescript-parser";
 
 const nodesloc = require('node-sloc');
@@ -54,8 +56,12 @@ export class AnalysisTool {
      * @param rootpath user input original directory path
      */
     constructor(rootpath: string) {
+        console.log("OMG");
         this.analysisDetails.mapOfFilesToConvert = new Map<String, Array<String>>();
         setTimeout(() => { }, 1000);
+    }
+
+    run(rootpath: string) {
         this.countLinesOfCode(rootpath, this.buildPathIgnoringGlobs(rootpath))
             .then(sourceLines => {
                 this.analysisDetails.linesOfCode = sourceLines;
@@ -69,10 +75,15 @@ export class AnalysisTool {
                 console.log(this.runAppStatistics());
                 console.log(this.runRecommendation(report));
                 console.log("rewriteThreshold: " + Math.round(this.analysisDetails.rewriteThreshold) + ", sloc: " + this.analysisDetails.linesOfCode + "\n");
+                // console.log(hey);
             })
             .catch(err => {
                 console.error("Error 2: ", err);
             });
+    }
+
+    getJSON() {
+        return hey;
     }
 
     /**
@@ -213,7 +224,7 @@ export class AnalysisTool {
 
     checkFileForTsCode(fileName: string, fileData: string) {
         parser.parseSource(fileData).then(function(data) {
-            console.log(data);
+            // console.log(data);
         });
         // let tsAST = this.createTsAST(fileData);
 
@@ -365,26 +376,40 @@ export class AnalysisTool {
             || this.analysisDetails.tsFileCount > 0) {
             report += "\n  * Complexity: " + this.analysisDetails.controllersCount + " controllers, "
                 + this.analysisDetails.componentCount + " AngularJS components, " +
-                + this.analysisDetails.jsFileCount + " JavaScript files, and "
+                +this.analysisDetails.jsFileCount + " JavaScript files, and "
                 + this.analysisDetails.tsFileCount + " Typescript files.";
         }
+
+
+
+        // JSON ADD ({ "complexity" : this.analysisDetails.lineOfCode })
+        hey.Complexity = this.analysisDetails.controllersCount.toString() ;
+        hey.AppSize = this.analysisDetails.linesOfCode.toString() + " lines of code";
+        hey.FileCount = this.analysisDetails.totalFilesOrFolderCount.toString() + this.analysisDetails.relevantFilesOrFolderCount + " relevant files/folders";
+
+
         report += "\n  * App size: " + this.analysisDetails.linesOfCode + " lines of code"
             + "\n  * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders, "
             + this.analysisDetails.relevantFilesOrFolderCount + " relevant files/folders"
             + "\n  * AngularJS Patterns: ";
         if (this.analysisDetails.rootScope) {
+            hey.AngularJSPatterns += " $rootScope, ";
             report += " $rootScope, ";
         }
         if (this.analysisDetails.compile) {
+            hey.AngularJSPatterns += " $compile, ";
             report += " $compile, ";
         }
         if (!this.analysisDetails.hasUnitTest) {
+            hey.AngularJSPatterns += " no unit tests, ";
             report += " no unit tests, ";
         }
         if (this.analysisDetails.jsFileCount > 0) {
+            hey.AngularJSPatterns += " JavaScript, ";
             report += " JavaScript, ";
         }
         if (this.analysisDetails.controllersCount > 0) {
+            hey.AngularJSPatterns += " .controller, ";
             report += " .controller, ";
         }
 

@@ -24,8 +24,12 @@
           <div class = "col-md text-center">
               <input type = "file" id = "real-file" hidden = "hidden" name = "file[]" multiple webkitdirectory />
               <button class = "btn btn-info text-center" id = "custom-button">Upload Files</button>
+              <button class = "btn btn-info text-center" id = "scan-button">Scan</button>
               &nbsp;<span class = "lead" id = "custom-text">No file chosen</span>
-              <br><br><button class = "btn btn-secondary text-center" id = "scanbutton" style = "display: none">Scan</button>
+              <!--<br><br><button class = "btn btn-secondary text-center" id = "scanbutton">-->
+                              <!--style = "display: none"-->
+
+              <!--Scan</button>-->
           </div>
       </div>
   </div>
@@ -33,7 +37,9 @@
   <p class = "lead text-center">Or, drop your AngularJS files here:</p>
 
   <div class = "dropzone" id = "dropzone">Drop your files here</div>
-  <script src = "src/renderer.js"></script> 
+
+    <script type="text/javascript" src="./dist/analysisTool.js/"></script>
+    <script type="text/javascript" src="src/renderer.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

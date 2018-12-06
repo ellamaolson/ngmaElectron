@@ -1,4 +1,6 @@
 // Default button from <input type = "file">
+// import {AnalysisTool} from "./analysisTool";
+
 const realFileButton = document.getElementById("real-file");
 
 // Bootstrap button connected to realFileButton
@@ -16,12 +18,12 @@ customButton.addEventListener("click", function() {
 
 // Displays file name when user selects a file
 realFileButton.addEventListener("change", function() {
-    
+
     // realFileButton performs all actions --> contains value of file
     // Updates customText to name of file
     if(realFileButton.value) {
         customText.innerHTML = realFileButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-        scanButton.style.display = "block";
+        // scanButton.style.display = "block";
         alert('Upload Successful!');
     }
     else {
@@ -30,12 +32,22 @@ realFileButton.addEventListener("change", function() {
     }
 });
 
+let scan_button = document.getElementById("scan-button");
+
+scan_button.addEventListener("click", async function() {
+    alert("Oh");
+});
+
 (function() {
-    var dropzone = document.getElementById('dropzone');
+    let dropzone = document.getElementById('dropzone');
+    let a = new AnalysisTool("../angular-phonecat");
+    a.run("../angular-phonecat");
+    alert(a.getJSON().Complexity);
 
     dropzone.ondrop = function(e) {
         e.preventDefault();
         this.className = 'dropzone';
+        scanButton.style.display = "block";
         alert('\'' + e.dataTransfer.files[0].name + '\'' + ' successfully uploaded!');
     };
 
