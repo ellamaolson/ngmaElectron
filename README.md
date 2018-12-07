@@ -57,7 +57,7 @@ Runs the analysis on the provided directory and returns a recommendation on whic
 
 **Sara Akhtar**
 
-**Sri Devi**
+**Sridevi Kuchibotla** [skuchibotla](https://github.com/skuchibotla)
 
 **Ziyun He**
 
