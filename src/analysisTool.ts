@@ -24,6 +24,7 @@ const project = new Project({
         target: ScriptTarget.ES3
     }
 });
+
 project.addExistingSourceFiles("**/*.ts");
 
 const cheerio = require('cheerio');
@@ -192,8 +193,8 @@ export class AnalysisTool {
         for (let fileOrFolder of this.buildPathIgnoringGlobs(rootpath)) {
             let currentPath = rootpath + "/" + fileOrFolder;
             if (fs.lstatSync(currentPath).isFile()) {
-                // this.testFile(currentPath);
-                this.checkTypeForAST(currentPath);
+                this.testFile(currentPath);
+                // this.checkTypeForAST(currentPath);
             }
         }
     }
