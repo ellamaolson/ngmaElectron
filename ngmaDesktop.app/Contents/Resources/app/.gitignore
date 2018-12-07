@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 node_modules/
 dist/
 
@@ -7,3 +8,8 @@ package-lock.json
 
 angular-phonecat-copy2/
 angularjs-typescript-webpack/
+=======
+node_modules
+dist
+package-lock.json
+>>>>>>> 08b135101f32ae341ddd2b912c79f52b910b8c65
