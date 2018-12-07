@@ -1,6 +1,6 @@
 import {
   app,
-  BrowserWindow
+  BrowserWindow,
 } from "electron";
 import * as path from "path";
 

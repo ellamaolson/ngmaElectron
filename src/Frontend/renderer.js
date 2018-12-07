@@ -10,7 +10,23 @@ customButton.addEventListener("click", function () {
 });
 
 scanButton.addEventListener("click", function () {
-    analyzeFile(dir, fileName);
+    setTimeout(function(){
+        let loading = document.getElementById('loading').value;
+        let content = document.getElementById('isItLoaded');
+        analyzeFile(dir, fileName);
+
+        if (isItLoaded === undefined) {
+            let newDiv = '<div class="letter">a</div>';
+            loading.innerHTML = newDiv;
+            loading.className = 'displayIt';
+        }
+        else if (isItLoaded !== undefined) {
+            loading.innerHTML = "";
+            loading.className = 'noDisplay';
+        }
+    },600);
+
+
 });
 
 // Displays file name when user selects a file
