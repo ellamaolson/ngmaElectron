@@ -1,0 +1,52 @@
+.vertical-center {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+}
+
+#scanbutton {
+    display: none;
+    margin: 0 auto;
+}
+
+.dropzone {
+    width: 70%;
+    height: 70%;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    line-height: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.dropzone.dragover {
+    border-color: #000;
+    color: #000;
+}
+
+.centered-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://assets.materialup.com/uploads/0712a6bf-2689-4dbb-9e36-94003ce960e8/preview.gif') center no-repeat #fff;
+}
+
+.loading {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('https://i.pinimg.com/originals/ca/89/fb/ca89fbce5e5c68f46d5330946c58ddc6.gif') center no-repeat #fff;
+}
