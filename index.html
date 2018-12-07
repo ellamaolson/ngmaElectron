@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <nav class="navbar nav justify-content-center sticky-top navbar-expand-lg navbar-light bg-light">
     <!--<div class="collapse navbar-collapse" id="navbarNav">-->
       <!--<ul class="navbar-nav">-->
@@ -43,6 +44,36 @@
     <div class="se-pre-con"></div>
     <div id="stage"></div>
   </div>
+=======
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container nav-container">
+      <a class="navbar-brand" href="index.html">ngma Desktop</a>
+      <a class="nav-item nav-link text-secondary" href="./src/About.html">About</a>
+    </div>
+  </nav>
+  <div class="vertical-center">
+    <div class="container">
+      <h1 class="display-1 text-center">Welcome to ngma Desktop</h1>
+      <p class="lead text-center">Convert your AngularJS files to Angular with ease by uploading your files</p>
+
+      <div class="col-md text-center">
+        <input type="file" id="real-file" hidden="hidden" name="file[]" multiple webkitdirectory />
+        <button class="btn btn-info text-center" id="custom-button">Upload Files</button>
+        &nbsp;<span class="lead" id="custom-text">No file chosen</span>
+        <br><br><button class="btn btn-secondary text-center" id="scanbutton" style="display: none">Scan</button>
+      </div>
+
+      <div class="drag-drop container results-panel centered-box">
+        <p class="lead text-center">Or, drop your AngularJS files here:</p>
+        <div class="dropzone" id="dropzone">Drop your files here</div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <script src="src/renderer.js"></script>
+</body>
+>>>>>>> 08b135101f32ae341ddd2b912c79f52b910b8c65
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
