@@ -25,13 +25,18 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "electron-drag-drop": "^1.1.0",
+    "esprima": "^4.0.1",
+    "esprima-walk": "^0.1.0",
     "glob": "^7.1.2",
     "node-sloc": "^0.1.11",
     "parse-gitignore": "^0.5.1",
+    "path": "^0.12.7",
     "ts-node": "^7.0.0",
     "ts-node-dev": "^1.0.0-pre.26",
+    "ts-simple-ast": "^19.1.0",
     "tslint": "^5.10.0",
-    "typescript-parser": "^2.6.1",
-    "electron-drag-drop": "^1.1.0"
+    "typescript-parser": "^2.6.1"
   }
 }

@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e45a1867-6f46-4d65-bebc-1492a13b5cb4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/screens/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/script/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/script/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/script/lib/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ngmaElectron.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ngmaElectron.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/About.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_3.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_4.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_5.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_6.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_7.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader3.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader4.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader5.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader6.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader7.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_1.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_2.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_3.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_4.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_5.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_6.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_7.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/script/loadImg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/lib/loadImg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/script/ngma.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/result.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/script/renderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frontend/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysisTool.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/lib/analysisTool.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.ts" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1980951495">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.164" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="2" />
+          <entry key="gitignore" value="1" />
+          <entry key="html" value="10" />
+          <entry key="js" value="22" />
+          <entry key="json" value="10" />
+          <entry key="rnc" value="1" />
+          <entry key="ts" value="11" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="2" />
+          <entry key="HTML" value="10" />
+          <entry key="JSON" value="7" />
+          <entry key="JavaScript" value="22" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="RNG Compact" value="1" />
+          <entry key="TypeScript" value="11" />
+          <entry key="tsconfig" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TsLintLanguageService" value="1" />
+          <entry key="TypeScriptServerServiceImpl" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="17" />
+          <entry key="html" value="1300" />
+          <entry key="js" value="1507" />
+          <entry key="json" value="161" />
+          <entry key="ts" value="1217" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="17" />
+          <entry key="HTML" value="1300" />
+          <entry key="JSON" value="131" />
+          <entry key="JavaScript" value="1507" />
+          <entry key="TypeScript" value="1217" />
+          <entry key="tsconfig" value="30" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-319">
+                  <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+                  <folding>
+                    <element signature="e#492#517#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/result.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-255">
+                  <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/lib/loadImg.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1275">
+                  <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/screens/about.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="11" selection-start-column="11" selection-end-column="11" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="78">
+                  <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/lib/routes.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/screens/home.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+                  <folding>
+                    <element signature="n#style#0;n#button#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/screens/result.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/script/main.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+                  <folding>
+                    <element signature="e#0#51#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/result.js">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/css/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="375">
+                  <caret line="61" column="3" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="61" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/script/home.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="390">
+                  <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="330">
+                  <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/common.rnc">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="177">
+                  <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="tsconfig.json" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>scan</find>
+      <find>customBut</find>
+      <find>ScanButton</find>
+      <find>ngma</find>
+      <find>upload</find>
+      <find>var</find>
+      <find>img</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>let</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/tsconfig.json" />
+        <option value="$PROJECT_DIR$/json.d.ts" />
+        <option value="$PROJECT_DIR$/src/analysisData.json" />
+        <option value="$PROJECT_DIR$/src/About.html" />
+        <option value="$PROJECT_DIR$/src/parser.js" />
+        <option value="$PROJECT_DIR$/src/parser.ts" />
+        <option value="$PROJECT_DIR$/src/ngmaAnalyzer.ts" />
+        <option value="$PROJECT_DIR$/src/renderer.js" />
+        <option value="$PROJECT_DIR$/src/analysisTool.ts" />
+        <option value="$PROJECT_DIR$/tsconfig.json" />
+        <option value="$PROJECT_DIR$/src/Frontend/index.html" />
+        <option value="$PROJECT_DIR$/src/Frontend/renderer.js" />
+        <option value="$PROJECT_DIR$/src/ngma.js" />
+        <option value="$PROJECT_DIR$/src/Frontend/style/style.css" />
+        <option value="$PROJECT_DIR$/src/Frontend/script/ngma.js" />
+        <option value="$PROJECT_DIR$/src/Frontend/script/renderer.js" />
+        <option value="$PROJECT_DIR$/src/Frontend/script/routes.js" />
+        <option value="$PROJECT_DIR$/src/Frontend/screens/home.html" />
+        <option value="$PROJECT_DIR$/src/Frontend/screens/recommendation.html" />
+        <option value="$PROJECT_DIR$/main.ts" />
+        <option value="$PROJECT_DIR$/src/js/routes.js" />
+        <option value="$PROJECT_DIR$/src/js/renderer.js" />
+        <option value="$PROJECT_DIR$/src/screens/recommendation.html" />
+        <option value="$PROJECT_DIR$/src/js/home.js" />
+        <option value="$PROJECT_DIR$/src/screens/about.html" />
+        <option value="$PROJECT_DIR$/src/js/index.js" />
+        <option value="$PROJECT_DIR$/src/js/loadImg.js" />
+        <option value="$PROJECT_DIR$/src/main.ts" />
+        <option value="$PROJECT_DIR$/src/js/ngma.js" />
+        <option value="$PROJECT_DIR$/src/script/home.js" />
+        <option value="$PROJECT_DIR$/src/screens/result.html" />
+        <option value="$PROJECT_DIR$/src/css/style.css" />
+        <option value="$PROJECT_DIR$/src/script/main.ts" />
+        <option value="$PROJECT_DIR$/src/screens/home.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="-1920" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="screens" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="$PROJECT_DIR$/node_modules/tslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.tslint" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/script" />
+      <recent name="$PROJECT_DIR$/src/script/lib" />
+      <recent name="$PROJECT_DIR$/src/js/lib" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e45a1867-6f46-4d65-bebc-1492a13b5cb4" name="Default Changelist" comment="" />
+      <created>1543879822430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1543879822430</updated>
+      <workItem from="1543879985960" duration="11441000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="26913000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20014094" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010571" side_tool="true" weight="0.32891566" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tslint.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analysisTool.js" />
+    <entry file="file://$PROJECT_DIR$/src/parser.ts" />
+    <entry file="file://$PROJECT_DIR$/json.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/analysisData.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/parser.js" />
+    <entry file="file://$PROJECT_DIR$/dist/ngmaAnalyzer.js" />
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/analysisData.json" />
+    <entry file="file://$PROJECT_DIR$/dist/analysisTool.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ngmaAnalyzer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="37" column="11" selection-start-line="37" selection-start-column="11" selection-end-line="37" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/common.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/bootstrap-4.1.3-dist/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/lib/loadImg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-319">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding>
+            <element signature="e#492#517#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/lib/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/result.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="11" selection-start-column="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="61" column="3" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="61" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/screens/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+          <folding>
+            <element signature="n#style#0;n#button#1;n#div#0;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
