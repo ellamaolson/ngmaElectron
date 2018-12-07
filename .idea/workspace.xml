@@ -2,62 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e45a1867-6f46-4d65-bebc-1492a13b5cb4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/screens/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/screens/result.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/script/lib/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ngmaElectron.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ngmaElectron.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/About.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_1.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_2.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_3.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_4.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_5.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_6.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-128x/Preloader_7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-128x/Preloader_7.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader1.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader2.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader3.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader4.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader5.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader6.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-32x/loader7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-32x/loader7.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_1.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_1.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_2.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_2.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_3.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_3.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_4.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_4.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_5.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_5.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_6.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_6.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/images/loader-64x/Preloader_7.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/img/loader-64x/Preloader_7.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/script/loadImg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/lib/loadImg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/script/ngma.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/result.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/script/renderer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-grid.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap-reboot.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/css/bootstrap.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.bundle.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/bootstrap/js/bootstrap.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Frontend/style/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysisTool.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/lib/analysisTool.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/script/lib/analysisTool.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/lib/analysisTool.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/script/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/script/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/result.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,10 +29,10 @@
           <entry key="css" value="2" />
           <entry key="gitignore" value="1" />
           <entry key="html" value="10" />
-          <entry key="js" value="22" />
+          <entry key="js" value="24" />
           <entry key="json" value="10" />
           <entry key="rnc" value="1" />
-          <entry key="ts" value="11" />
+          <entry key="ts" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -93,10 +40,10 @@
           <entry key="CSS" value="2" />
           <entry key="HTML" value="10" />
           <entry key="JSON" value="7" />
-          <entry key="JavaScript" value="22" />
+          <entry key="JavaScript" value="24" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="RNG Compact" value="1" />
-          <entry key="TypeScript" value="11" />
+          <entry key="TypeScript" value="12" />
           <entry key="tsconfig" value="3" />
         </counts>
       </usages-collector>
@@ -109,33 +56,33 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="17" />
-          <entry key="html" value="1300" />
-          <entry key="js" value="1507" />
+          <entry key="html" value="1301" />
+          <entry key="js" value="1548" />
           <entry key="json" value="161" />
-          <entry key="ts" value="1217" />
+          <entry key="ts" value="1337" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="17" />
-          <entry key="HTML" value="1300" />
+          <entry key="HTML" value="1301" />
           <entry key="JSON" value="131" />
-          <entry key="JavaScript" value="1507" />
-          <entry key="TypeScript" value="1217" />
+          <entry key="JavaScript" value="1548" />
+          <entry key="TypeScript" value="1337" />
           <entry key="tsconfig" value="30" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.47634584">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-319">
-                  <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+                <state relative-caret-position="125">
+                  <caret line="83" column="46" lean-forward="true" selection-start-line="83" selection-start-column="46" selection-end-line="83" selection-end-column="46" />
                   <folding>
                     <element signature="e#492#517#0" expanded="true" />
                   </folding>
@@ -143,11 +90,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/script/result.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-255">
-                  <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+                <state relative-caret-position="330">
+                  <caret line="22" column="49" lean-forward="true" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
                 </state>
               </provider>
             </entry>
@@ -170,7 +117,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="78">
@@ -200,8 +147,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/screens/home.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+                <state relative-caret-position="300">
+                  <caret line="20" selection-start-line="20" selection-end-line="20" />
                   <folding>
                     <element signature="n#style#0;n#button#1;n#div#0;n#section#0;n#!!top" expanded="true" />
                   </folding>
@@ -223,10 +170,19 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="170">
+                  <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/script/main.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="165">
-                  <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+                <state relative-caret-position="270">
+                  <caret line="18" selection-start-line="18" selection-end-line="18" />
                   <folding>
                     <element signature="e#0#51#0" expanded="true" />
                   </folding>
@@ -236,14 +192,27 @@
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/script/result.js">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="150">
+                  <caret line="10" column="17" selection-start-line="18" selection-end-line="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/dist/lib/analysisTool.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="352">
+                  <caret line="250" column="13" lean-forward="true" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
+                </state>
+              </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="375">
-                  <caret line="61" column="3" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="61" selection-end-column="3" />
+                  <caret line="61" column="3" selection-start-line="53" selection-start-column="6" selection-end-line="61" selection-end-column="3" />
                 </state>
               </provider>
             </entry>
@@ -251,8 +220,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/script/home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+                <state relative-caret-position="-223">
+                  <caret line="6" selection-start-line="6" selection-end-line="6" />
                 </state>
               </provider>
             </entry>
@@ -261,7 +230,7 @@
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="330">
-                  <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+                  <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -301,6 +270,15 @@
       <find>upload</find>
       <find>var</find>
       <find>img</find>
+      <find>component</find>
+      <find>createCustom</find>
+      <find>tsFileCount</find>
+      <find>@angular</find>
+      <find>jsFileCount</find>
+      <find>relevant</find>
+      <find>relevantFile</find>
+      <find>runAppSta</find>
+      <find>runAn</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -341,12 +319,14 @@
         <option value="$PROJECT_DIR$/src/js/loadImg.js" />
         <option value="$PROJECT_DIR$/src/main.ts" />
         <option value="$PROJECT_DIR$/src/js/ngma.js" />
-        <option value="$PROJECT_DIR$/src/script/home.js" />
         <option value="$PROJECT_DIR$/src/screens/result.html" />
         <option value="$PROJECT_DIR$/src/css/style.css" />
-        <option value="$PROJECT_DIR$/src/script/main.ts" />
-        <option value="$PROJECT_DIR$/src/screens/home.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/screens/home.html" />
+        <option value="$PROJECT_DIR$/src/script/home.js" />
+        <option value="$PROJECT_DIR$/src/script/main.ts" />
+        <option value="$PROJECT_DIR$/src/script/result.js" />
+        <option value="$PROJECT_DIR$/src/script/lib/analysisTool.ts" />
       </list>
     </option>
   </component>
@@ -390,6 +370,17 @@
             <path>
               <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
               <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -403,6 +394,13 @@
               <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="script" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ngmaElectron" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ngmaElectron" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="script" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -470,12 +468,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26913000" />
+    <option name="totallyTimeSpent" value="31158000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20014094" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13601127" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -532,13 +530,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/analysisData.json" />
-    <entry file="file://$PROJECT_DIR$/dist/analysisTool.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ngmaAnalyzer.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -590,27 +581,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-319">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding>
-            <element signature="e#492#517#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/script/lib/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/result.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-255">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -628,13 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/about.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -645,34 +612,69 @@
     <entry file="file://$PROJECT_DIR$/src/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="61" column="3" lean-forward="true" selection-start-line="53" selection-start-column="6" selection-end-line="61" selection-end-column="3" />
+          <caret line="61" column="3" selection-start-line="53" selection-start-column="6" selection-end-line="61" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/main.ts">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-223">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/screens/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        <state relative-caret-position="300">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="n#style#0;n#button#1;n#div#0;n#section#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/dist/analysisTool.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
+        <state relative-caret-position="227">
+          <caret line="198" column="46" lean-forward="true" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/result.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" selection-start-line="18" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/lib/analysisTool.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="250" column="13" lean-forward="true" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
         </state>
       </provider>
     </entry>
