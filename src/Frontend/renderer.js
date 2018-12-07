@@ -2,7 +2,7 @@ const realFileButton = document.getElementById("real-file");
 const customButton = document.getElementById("custom-button");
 const scanButton = document.getElementById("scanbutton");
 
-let dir;
+let dir, fileName;
 let dropzone = document.getElementById('dropzone');
 // Opens file manager
 customButton.addEventListener("click", function () {
@@ -10,7 +10,7 @@ customButton.addEventListener("click", function () {
 });
 
 scanButton.addEventListener("click", function () {
-    analyzeFile(dir);
+    analyzeFile(dir, fileName);
 });
 
 // Displays file name when user selects a file
@@ -21,7 +21,8 @@ realFileButton.addEventListener("change", function (e) {
 
     if (realFileButton.value) {
         dir = this.files[0].path;
-        customText.innerHTML = realFileButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        fileName = this.files[0].name;
+        customText.innerHTML = fileName;
         scanButton.style.display = "block";
         // alert('Uploaded Successfully');
     } else {
@@ -36,7 +37,8 @@ realFileButton.addEventListener("change", function (e) {
         e.preventDefault();
         this.className = 'dropzone';
         dir = e.dataTransfer.files[0].path;
-        customText.innerHTML = e.dataTransfer.files[0].name;
+        fileName = e.dataTransfer.files[0].name;
+        customText.innerHTML = fileName;
         scanButton.style.display = "block";
         // alert('\'' + e.dataTransfer.files[0].name + '\'' + ' successfully uploaded!');
     };

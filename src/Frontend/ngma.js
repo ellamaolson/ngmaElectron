@@ -1,26 +1,24 @@
 let customText  = document.getElementById("custom-text");
 
 //Run ngma on the directory then print results
-function analyzeFile(dir) {
+function analyzeFile(dir, fileName) {
     //ngma instance
-    const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
 
-    // Please use your own Path
-    // let dir = '/Users/cuongvqnguyen/Documents/School/Fall 2018/SE 133/angularjs-typescript-webpack';
+    const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
 
     let analysis = new AnalysisTool(dir);
     analysis.promiseSchedule(dir, function(){
         //print ngma results
         let h = document.querySelector('.results-panel');
         let report = '<h2>' + "Welcome to ngMigration Assistant!" + '</h2>'
-            + '<br>' + "Here are the criteria I am scanning for in your application:"
+            + '<br>' + "Here are the criteria I am scanning for in your "+ '<b>' + fileName + '</b>' + " application:"
             + '<br>' + "  * Complexity" + '<br>' + "  * App size in lines of code and amount of relevant files and folders"
             + '<br>' + "  * AngularJS patterns" + '<br>' + "  * AngularJS version" + '<br>'
             + "  * Preparation necessary for migration" + '<br>'
             + "To learn more about criteria selection, visit https://angular.io/guide/upgrade#preparation." + '<br>';
 
         let blah = analysis.runAppStatistics();
-        console.log('BLAh: ' + blah);
+        // console.log('BLAh: ' + blah);
         blah.forEach(function (element) {
             if (element === analysis.runAppStatistics()[0]) {
                 report += '<br><h4>' + element + '</h4>';

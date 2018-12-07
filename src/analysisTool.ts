@@ -34,7 +34,6 @@ export class AnalysisTool {
     private CODE_LIMIT_MULTIPLIER: number = 1.25;
     private VALUE_NOT_FOUND: number = -1;
 
-
     numDotComponentCount = 0;
     numAtComponentCount = 0;
 
@@ -290,7 +289,6 @@ export class AnalysisTool {
 
 
     checkTSFileForRootScope(filePath: string) {
-        console.log(typeof filePath);
         const sourceFile = project.getSourceFileOrThrow(filePath);
 
 
@@ -378,10 +376,10 @@ export class AnalysisTool {
                 if (node.getKindName() === "PropertyAccessExpression") {
                     node.forEachDescendant((anotherNode) => {
                         if (anotherNode.getFullText() === "controller") {
-                            console.log("found .controller ");
+                            // console.log("found .controller ");
                             this.addFileToSpecificMap(filePath, " controller");
                         } else if (anotherNode.getFullText() === "component") {
-                            console.log("found .component" + " " + sourceFile.getBaseName());
+                            // console.log("found .component" + " " + sourceFile.getBaseName());
                             this.numDotComponentCount++;
                             this.analysisDetails.componentCount++;
                         }
