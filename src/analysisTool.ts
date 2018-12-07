@@ -64,14 +64,14 @@ export class AnalysisTool {
      * @param rootpath user input original directory path
      */
     constructor(rootpath: string) {
-        console.log("ROOTPATH: " + rootpath);
+        // console.log("ROOTPATH: " + rootpath);
         this.analysisDetails.mapOfFilesToConvert = new Map <String, Array<String>> ();
         setTimeout(() => {}, 1000);
         this.promiseSchedule(rootpath, function(){});
     }
 
     promiseSchedule(rootpath: string, callback: Function) {
-        console.log("ROOTPATH 2: " + rootpath);
+        // console.log("ROOTPATH 2: " + rootpath);
         this.countLinesOfCode(rootpath, this.buildPathIgnoringGlobs(rootpath))
             .then(sourceLines => {
                 this.analysisDetails.linesOfCode = sourceLines;
