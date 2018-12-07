@@ -25,8 +25,6 @@ const project = new Project({
     }
 });
 
-project.addExistingSourceFiles("**/*.ts");
-
 const cheerio = require('cheerio');
 const esprima = require('esprima');
 const walk = require( 'esprima-walk' );
@@ -74,6 +72,9 @@ export class AnalysisTool {
         this.analysisDetails.mapOfFilesToConvert = new Map <String, Array<String>> ();
         setTimeout(() => {}, 1000);
         this.promiseSchedule(rootpath, function(){});
+        project.addExistingSourceFiles(rootpath + "/**/*{.d.ts,.ts}");
+
+
     }
 
     promiseSchedule(rootpath: string, callback: Function) {
