@@ -20,12 +20,10 @@ realFileButton.addEventListener("change", function (e) {
     // Updates customText to name of file
 
     if (realFileButton.value) {
-        // console.log(realFileButton.getPath());
         dir = this.files[0].path;
         customText.innerHTML = realFileButton.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-
         scanButton.style.display = "block";
-        alert('Uploaded Successfully');
+        // alert('Uploaded Successfully');
     } else {
         customText.innerHTML = "No file chosen";
         scanButton.style.display = "none";
@@ -37,8 +35,10 @@ realFileButton.addEventListener("change", function (e) {
     dropzone.ondrop = function (e) {
         e.preventDefault();
         this.className = 'dropzone';
-        console.log(e.dataTransfer.files[0].path);
-        alert('\'' + e.dataTransfer.files[0].name + '\'' + ' successfully uploaded!');
+        dir = e.dataTransfer.files[0].path;
+        customText.innerHTML = e.dataTransfer.files[0].name;
+        scanButton.style.display = "block";
+        // alert('\'' + e.dataTransfer.files[0].name + '\'' + ' successfully uploaded!');
     };
 
     dropzone.ondragover = function () {

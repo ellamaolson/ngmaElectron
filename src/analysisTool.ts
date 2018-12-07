@@ -36,6 +36,11 @@ export class AnalysisTool {
     private CODE_LIMIT_MULTIPLIER: number = 1.25;
     private VALUE_NOT_FOUND: number = -1;
 
+
+    numDotComponentCount = 0;
+    numAtComponentCount = 0;
+
+
     analysisDetails = {
         rewriteThreshold: 880, // 880 lines is considered 1 month's work of coding 
         angularElement: false,
@@ -193,8 +198,8 @@ export class AnalysisTool {
         for (let fileOrFolder of this.buildPathIgnoringGlobs(rootpath)) {
             let currentPath = rootpath + "/" + fileOrFolder;
             if (fs.lstatSync(currentPath).isFile()) {
-                this.testFile(currentPath);
-                // this.checkTypeForAST(currentPath);
+                // this.testFile(currentPath);
+                this.checkTypeForAST(currentPath);
             }
         }
     }
@@ -273,18 +278,20 @@ export class AnalysisTool {
      */
     testFileUsingTsAST(currentPath: string) {
         let tests = [
-            (filename: string, data: string) => this.checkTSFileForRootScope(filename, data),
-            (filename: string, data: string) => this.checkTSFileForCompile(filename, data),
-            (filename: string, data: string) => this.checkTSFileForAngularElement(filename, data),
-            (filename: string, data: string) => this.checkTSFileForComponent(filename, data)
+            () => this.checkTSFileForRootScope(currentPath),
+            () => this.checkTSFileForCompile(currentPath),
+            () => this.checkTSFileForAngularElement(currentPath),
+            () => this.checkTSFileForComponent(currentPath)
         ];
 
-        for (let i = 0; i < tests.length; i++) tests[i](currentPath, fs.readFileSync(currentPath, "utf8"));
+        for (let i = 0; i < tests.length; i++) tests[i]();
     }
 
 
-    checkTSFileForRootScope(fileName: string, fileData: string) {
-        const sourceFile = project.getSourceFileOrThrow(fileName);
+    checkTSFileForRootScope(filePath: string) {
+        console.log(typeof filePath);
+        const sourceFile = project.getSourceFileOrThrow(filePath);
+
 
         const classesList = sourceFile.getClasses();
         const variableDeclarationList = sourceFile.getVariableDeclarations();
@@ -292,7 +299,7 @@ export class AnalysisTool {
         // Check if it's a variable Declaration
         for (let i = 0; i < variableDeclarationList.length - 1; i++) {
             if (variableDeclarationList[i].getName() === "$rootScope") {
-                this.addFileToSpecificMap(fileName, " $rootScope");
+                this.addFileToSpecificMap(filePath, " $rootScope");
             }
         }
 
@@ -303,7 +310,7 @@ export class AnalysisTool {
             // Check if it's defined in a class
             for (let j = 0; j < propertyList.length - 1; j++) {
                 if (propertyList[j].getName() === "$rootScope")
-                    this.addFileToSpecificMap(fileName, " $rootScope");
+                    this.addFileToSpecificMap(filePath, " $rootScope");
             }
 
             for (let j = 0; j < functionList.length - 1; j++) {
@@ -311,34 +318,34 @@ export class AnalysisTool {
                 // Check if it's used in a body of a function
                 for (let k = 0; k < functionList[j].getVariableDeclarations().length - 1; k++) {
                     if (functionList[j].getVariableDeclarations()[k].getName() === "$rootScope") {
-                        this.addFileToSpecificMap(fileName, " $rootScope");
+                        this.addFileToSpecificMap(filePath, " $rootScope");
                     }
                 }
 
                 // Check if it's a variable in a parameter
                 if (functionList[j].getParameter("$rootScope")) {
-                    this.addFileToSpecificMap(fileName, " $rootScope");
+                    this.addFileToSpecificMap(filePath, " $rootScope");
                 }
             }
         }
     }
 
-    checkTSFileForCompile(fileName: string, fileData: string) {
-        const sourceFile = project.getSourceFileOrThrow(fileName);
+    checkTSFileForCompile(filePath: string) {
+        const sourceFile = project.getSourceFileOrThrow(filePath);
         const classesList = sourceFile.getClasses();
 
         for (let i = 0; i < classesList.length; i++) {
             let functionList = classesList[i].getMethods();
             for (let j = 0; j < functionList.length - 1; j++) {
                 if (functionList[j].getName() === "compile") {
-                    this.addFileToSpecificMap(fileName, " $compile")
+                    this.addFileToSpecificMap(filePath, " $compile")
                 }
             }
         }
     }
 
-    checkTSFileForAngularElement(fileName: string, fileData: string) {
-        const sourceFile = project.getSourceFileOrThrow(fileName);
+    checkTSFileForAngularElement(filePath: string) {
+        const sourceFile = project.getSourceFileOrThrow(filePath);
         const classesList = sourceFile.getClasses();
         const importList = sourceFile.getImportDeclarations();
 
@@ -359,8 +366,8 @@ export class AnalysisTool {
         }
     }
 
-    checkTSFileForComponent(fileName: string, fileData: string) {
-        const sourceFile = project.getSourceFileOrThrow(fileName);
+    checkTSFileForComponent(filePath: string) {
+        const sourceFile = project.getSourceFileOrThrow(filePath);
         const classesList = sourceFile.getClasses();
 
         // Check if .component + .controller
@@ -371,9 +378,10 @@ export class AnalysisTool {
                     node.forEachDescendant((anotherNode) => {
                         if (anotherNode.getFullText() === "controller") {
                             console.log("found .controller ");
-                            this.addFileToSpecificMap(fileName, " controller");
+                            this.addFileToSpecificMap(filePath, " controller");
                         } else if (anotherNode.getFullText() === "component") {
                             console.log("found .component" + " " + sourceFile.getBaseName());
+                            this.numDotComponentCount++;
                             this.analysisDetails.componentCount++;
                         }
                     });
@@ -381,20 +389,22 @@ export class AnalysisTool {
             });
         }
 
+
         // Check if @component --> Check for decorator
         for (let i = 0; i < classesList.length; i++) {
             if (classesList[i].getDecorator("Component")) {
+                this.numAtComponentCount++;
                 this.analysisDetails.componentCount++;
             }
         }
     }
 
 
-    addFileToSpecificMap(fileName: string, value: string) {
+    addFileToSpecificMap(filePath: string, value: string) {
         if (value === " $rootScope") this.analysisDetails.rootScope = true;
         else if (value === " $compile") this.analysisDetails.compile = true;
         else if (value === " controller") this.analysisDetails.controllersCount++;
-        this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, fileName, value);
+        this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, filePath, value);
     }
 
 
@@ -473,11 +483,13 @@ export class AnalysisTool {
         }
 
         if (componentMatches) {
+            this.numDotComponentCount++;
             this.analysisDetails.componentCount += componentMatches.length;
         }
 
         // AngularJS decorated component matches
         if (decoratedComponentMatches && !fileData.includes('@angular/core')) {
+            this.numAtComponentCount++;
             this.analysisDetails.componentCount += decoratedComponentMatches.length;
         }
     }
@@ -544,6 +556,10 @@ export class AnalysisTool {
             this.analysisDetails.jsFileCount > 0 ||
             this.analysisDetails.tsFileCount > 0) {
 
+            console.log("Num of .component matches: " + this.numDotComponentCount);
+
+            console.log("Num of @component matches: " + this.numAtComponentCount);
+
             reportArray[1] = " * Complexity: " + this.analysisDetails.controllersCount + " controllers, " +
                 this.analysisDetails.componentCount + " AngularJS components, " +
                 +this.analysisDetails.jsFileCount + " JavaScript files, and " +
@@ -551,7 +567,7 @@ export class AnalysisTool {
         }
         reportArray[2] = " * App size: " + this.analysisDetails.linesOfCode + " lines of code";
         reportArray[3] = " * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders,";
-        reportArray[4] = " * AngularJS Patterns: "
+        reportArray[4] = " * AngularJS Patterns: ";
 
         if (this.analysisDetails.rootScope) {
             reportArray[4] += " $rootScope, "
