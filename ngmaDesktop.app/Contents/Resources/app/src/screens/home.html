@@ -1,0 +1,20 @@
+<section id="headliner">
+    <h1 class="display-1 text-center">Welcome to ngma Desktop</h1>
+    <p class="lead text-center">Convert your AngularJS files to Angular with ease by uploading your files</p>
+    <div class="col-md text-center">
+        <div class="drag-drop container centered-box">
+            <p class="lead text-center">Or, drop your AngularJS files here:</p>
+            <div class="dropzone" id="dropzone">Drop your files here</div>
+        </div>
+        <br>
+
+        <input type="file" id="real-file" hidden="hidden" name="file[]" multiple webkitdirectory />
+        <button class="btn btn-info text-center" id="custom-button">Upload Files</button>
+        &nbsp;<span class="lead" id="custom-text"></span>
+        <br><br>
+        <button onclick="window.location.href='#/result'" class="btn btn-secondary text-center" id="scanbutton" style="display: none">Scan</button>
+    </div>
+</section>
+
+<script src="src/script/home.js" type="text/javascript"></script>
+
