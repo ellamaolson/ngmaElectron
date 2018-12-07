@@ -1,0 +1,39 @@
+.nav-container {
+    width: 50% !important;
+}
+
+.vertical-center {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#scanbutton {
+    display: none;
+    margin: 0 auto;
+}
+
+.drag-drop {
+    margin-top: 2%;
+}
+
+.about {
+    margin-top: 12%;
+}
+
+.dropzone {
+    width: 70%;
+    height: 70%;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    line-height: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.dropzone.dragover {
+    border-color: #000;
+    color: #000;
+}
+

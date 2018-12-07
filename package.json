@@ -8,7 +8,7 @@
     "package": "asar pack ngmaDesktop-darwin-x64/ngmaDesktop.app/Contents/Resources/app ngmaDesktop-darwin-x64/ngmaDesktop.app/Contents/Resources/app.asar",
     "watch": "tsc -w",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist/main.js"
+    "start": "electron ./dist/main.js"
   },
   "repository": "https://github.com/electron/electron-quick-start-typescript",
   "keywords": [
@@ -22,9 +22,16 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+<<<<<<< HEAD
     "asar": "^0.14.5",
     "electron": "^3.0.10",
     "electron-packager": "^13.0.0",
+=======
+    "@types/node": "^10.12.12",
+    "asar": "^0.14.5",
+    "electron": "^3.0.10",
+    "electron-packager": "^12.2.0",
+>>>>>>> 08b135101f32ae341ddd2b912c79f52b910b8c65
     "tslint": "^5.10.0",
     "typescript": "^2.9.2"
   },
