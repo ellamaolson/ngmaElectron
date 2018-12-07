@@ -9,7 +9,7 @@
  * @license
  * Copyright Google Inc. All Rights Reserved.
  *
- * Use of this source code is governed by an MIT-style license that can be
+ * Use of this source code is governed by an MIT-css license that can be
  * found in the LICENSE file at https://angular.io/license
  */
 
@@ -130,8 +130,8 @@ export class AnalysisTool {
             '.git', '.git/**', '**/.git', '**/.git/**',
             'tsconfig.json', 'tsconfig.json/**', '**/tsconfig.json', '**/tsconfig.json/**',
             'e2e', 'e2e/**', '**/e2e', '**/e2e/**',
-            'jquery.js', 'jquery.js/**', '**/jquery.js', '**/jquery.js/**',
-            'angular.js', 'angular.js/**', '**/angular.js', '**/angular.js/**'
+            'jquery.script', 'jquery.script/**', '**/jquery.script', '**/jquery.script/**',
+            'angular.script', 'angular.script/**', '**/angular.script', '**/angular.script/**'
         ];
         allIgnoreGlobs = [...gitignore(rootpath + "/.gitignore"), ...defaultIgnoreGlobs].filter((pattern) => {
             return !pattern.startsWith("!");
@@ -169,7 +169,7 @@ export class AnalysisTool {
             for (let file of filteredFilePaths) {
                 const options = {
                     path: rootPath + "/" + file,
-                    extensions: ['js', 'ts', 'html'],
+                    extensions: ['script', 'ts', 'html'],
                     ignorePaths: ['node_modules'],
                     ignoreDefaut: false,
                 };
@@ -221,7 +221,7 @@ export class AnalysisTool {
             (filename: string, data: string) => this.checkFileForComponent(filename, data)
         ];
 
-        if (currentPath.substr(-3) === '.js' || this.fileHasTsExtension(currentPath) || currentPath.substr(-5) === '.html' || currentPath.substr(-5) === '.json') {
+        if (currentPath.substr(-3) === '.script' || this.fileHasTsExtension(currentPath) || currentPath.substr(-5) === '.html' || currentPath.substr(-5) === '.json') {
             this.analysisDetails.relevantFilesOrFolderCount++;
             for (let i = 0; i < tests.length; i++) {
                 tests[i](currentPath, fs.readFileSync(currentPath, "utf8"));
@@ -463,7 +463,7 @@ export class AnalysisTool {
     }
 
     checkFileForScriptingLanguage(filename: string, fileData: string) {
-        if (filename.substr(-3) === '.js') {
+        if (filename.substr(-3) === '.script') {
             this.analysisDetails.jsFileCount++;
             this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, filename, " JavaScript");
         } else if (this.fileHasTsExtension(filename)) {

@@ -1,6 +1,3 @@
-let customText  = document.getElementById("custom-text");
-let isDone = false;
-
 //Run ngma on the directory then print results
 function analyzeFile(dir, fileName) {
     //ngma instance
@@ -46,8 +43,11 @@ function analyzeFile(dir, fileName) {
             }
         });
         report += '<br>' + "Head to Migration-Forum to understand this migration approach, found at https://github.com/angular/ngMigration-Forum/wiki" + '<br>';
+        report += '<br> <button onclick="window.location.href=\'#/home\'" class="btn btn-info text-center">Scan A New Project</button>';
         h.innerHTML = report;
-        isDone = true;
     });
-    $(".loading").fadeOut("fast");
+
+    setTimeout(function() {
+        $(".loading").fadeOut("slow");
+    }, 1000);
 }

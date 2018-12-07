@@ -1,7 +1,7 @@
 (function() {
     (function($) {
         return $.fn.imgPreload = function(options) {
-            var delay_completion, i, image_stack, placeholder_stack, replace, settings, spinner_stack, src, x, _i, _len;
+            let delay_completion, i, image_stack, placeholder_stack, replace, settings, spinner_stack, src, x, _i, _len;
             settings = {
                 fake_delay: 10,
                 animation_duration: 1000,
@@ -15,7 +15,7 @@
             spinner_stack = [];
             window.delay_completed = false;
             delay_completion = function() {
-                var x, _i, _len, _results;
+                let x, _i, _len, _results;
                 window.delay_completed = true;
                 _results = [];
                 for (_i = 0, _len = image_stack.length; _i < _len; _i++) {
@@ -26,7 +26,7 @@
             };
             setTimeout(delay_completion, settings.fake_delay);
             this.each(function() {
-                var $image, $placeholder, $spinner_img, offset_left, offset_top;
+                let $image, $placeholder, $spinner_img, offset_left, offset_top;
                 $image = $(this);
                 offset_top = $image.offset().top;
                 offset_left = $image.offset().left;
@@ -83,7 +83,7 @@
                 });
             }
             replace = function(image) {
-                var $image, no_;
+                let $image, no_;
                 $image = $(image);
                 no_ = $image.attr('no');
                 placeholder_stack[no_].replaceWith($image);
