@@ -2,7 +2,7 @@
 function analyzeFile(dir, fileName) {
     //ngma instance
 
-    const AnalysisTool = require('./dist/analysisTool').AnalysisTool; //'ngma/analysisTool'
+    const AnalysisTool = require('./dist/lib/analysisTool').AnalysisTool; //'ngma/analysisTool'
 
     let analysis = new AnalysisTool(dir);
     analysis.promiseSchedule(dir, function(){
@@ -17,9 +17,8 @@ function analyzeFile(dir, fileName) {
             + "To learn more about criteria selection, visit https://angular.io/guide/upgrade#preparation." + '<br>';
 
         let blah = analysis.runAppStatistics();
-        // console.log('BLAh: ' + blah);
         blah.forEach(function (element) {
-            if (element === analysis.runAppStatistics()[0]) {
+            if (element === blah[0]) {
                 report += '<br><h4>' + element + '</h4>';
             } else {
                 report += element + " " + '<br>' ;
@@ -27,8 +26,9 @@ function analyzeFile(dir, fileName) {
         });
 
         report += '<p>';
-        analysis.runRecommendation().forEach(function (element) {
-            if (element === analysis.runRecommendation()[0]) {
+        let blah2 = analysis.runRecommendation();
+        blah2.forEach(function (element) {
+            if (element === blah2[0]) {
                 report += '<br><h4>' + element + '</h4>';
             } else {
                 report += element + '<br>';

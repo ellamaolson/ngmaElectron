@@ -53,7 +53,7 @@ Runs the analysis on the provided directory and returns a recommendation on whic
 
 **Elana Olson** - [ellamaolson](https://github.com/ellamaolson)
 
-**Calvin Nguyen** [nivlaCuong](https://github.com/NivlaCuong)
+**Calvin Nguyen** - [nivlaCuong](https://github.com/NivlaCuong)
 
 **Sara Akhtar**
 

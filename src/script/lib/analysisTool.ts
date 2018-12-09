@@ -70,7 +70,7 @@ export class AnalysisTool {
         // console.log("ROOTPATH: " + rootpath);
         this.analysisDetails.mapOfFilesToConvert = new Map <String, Array<String>> ();
         setTimeout(() => {}, 1000);
-        this.promiseSchedule(rootpath, function(){});
+        // this.promiseSchedule(rootpath, function(){});
         project.addExistingSourceFiles(rootpath + "/**/*{.d.ts,.ts}");
 
 
@@ -88,11 +88,11 @@ export class AnalysisTool {
                 console.error("Error 1: ", err);
             })
             .then(report => {
-                this.runAppStatistics();
+                // this.runAppStatistics();
                 console.log(this.runAppStatistics());
                 this.analysisDetails.antiPatternReport = report;
                 console.log(report);
-                this.runRecommendation();
+                // this.runRecommendation();
                 console.log(this.runRecommendation());
                 console.log("rewriteThreshold: " + Math.round(this.analysisDetails.rewriteThreshold) + ", sloc: " + this.analysisDetails.linesOfCode + "\n");
                 callback();
@@ -230,40 +230,70 @@ export class AnalysisTool {
     }
 
     checkTypeForAST(currentPath: string) {
-        if (this.fileHasTsExtension(currentPath)) {                  // If file is TypeScript ==> TS Parser
+        if (currentPath.substr(-5) === '.json') {
+            this.analysisDetails.relevantFilesOrFolderCount++;
+            this.checkFileForRouter(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkFileForUnitTests(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkAngularVersion(currentPath, fs.readFileSync(currentPath, "utf8"));
+
+        }
+        else if (this.fileHasTsExtension(currentPath)) {                  // If file is TypeScript ==> TS Parser
             this.analysisDetails.tsFileCount++;
+            this.analysisDetails.relevantFilesOrFolderCount++;
             this.testFileUsingTsAST(currentPath);
+
+            this.checkFileForRouter(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkFileForUnitTests(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkAngularVersion(currentPath, fs.readFileSync(currentPath, "utf8"));
         } else {
             let scriptContent;
             if (currentPath.substr(-5) === '.html') {                             // If file is HTML --> HTML Parser --> Check if there's JS
                 const $ = cheerio.load(fs.readFileSync(currentPath, "utf8"));
-                scriptContent = $('script').html();
-            } else {
+                // scriptContent = $('script').html();
+                this.analysisDetails.relevantFilesOrFolderCount++;
+            } else if (currentPath.substr(-3) === '.js') {
+                this.analysisDetails.jsFileCount++;
+                this.analysisDetails.relevantFilesOrFolderCount++;
+                console.log(this.analysisDetails.jsFileCount);
                 scriptContent = fs.readFileSync(currentPath, "utf8");
+                this.testJSFileUsingEsprimaParser(currentPath, scriptContent);
+                this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, currentPath, " JavaScript");
+
+
+                this.checkFileForRouter(currentPath, fs.readFileSync(currentPath, "utf8"));
+                this.checkFileForUnitTests(currentPath, fs.readFileSync(currentPath, "utf8"));
+                this.checkAngularVersion(currentPath, fs.readFileSync(currentPath, "utf8"));
             }
-            // this.testJSFileUsingEsprimaParser(scriptContent);
         }
     }
 
+    trimShebang(inputBody: string): string {
+        if (inputBody.substring(0, 2) === '#!') {
+            return inputBody.replace("#!", "//#!");
+        }
+        return inputBody;
+    }
 
-    testJSFileUsingEsprimaParser(fileData: string) {
-        // fileData = this.trimShebang(fileData);  // we always have to trim the file first before scan
+    testJSFileUsingEsprimaParser(fileName: string, fileData: string) {
+        fileData = this.trimShebang(fileData);  // we always have to trim the file first before scan
         let tree = esprima.parse(fileData);
+        let classTemp = this;
         walk(tree, function ( node:any ) {
             if(node.type === 'Identifier') {
                 if (node.name === '$rootScope') { // find the rootScope
-                    //this.analysisDetails.rootScope = true;
-                    //this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, filename, " $rootScope");
+                    classTemp.analysisDetails.rootScope = true;
+                    classTemp.pushValueOnKey(classTemp.analysisDetails.mapOfFilesToConvert, fileName, " $rootScope");
                 } else if (node.name === 'createCustomElement') { // find the createCustomElement
-                    // find
+                    classTemp.analysisDetails.angularElement = true;
                 } else if (node.name === 'controller') { // find the controller
-                    // find
+                    classTemp.analysisDetails.controllersCount++;
+                    classTemp.pushValueOnKey(classTemp.analysisDetails.mapOfFilesToConvert, fileName, " controller");
                 } else if (node.name === 'component') { // find the component
-                    // find
+                    classTemp.analysisDetails.componentCount++;
                 }
             }
             if(node.type === 'Literal' && node.value === '@angular/core') {
-                // find the @angular/core
+                classTemp.analysisDetails.usingAngular = true;
             }
         });
     }
@@ -555,9 +585,9 @@ export class AnalysisTool {
             this.analysisDetails.jsFileCount > 0 ||
             this.analysisDetails.tsFileCount > 0) {
 
-            console.log("Num of .component matches: " + this.numDotComponentCount);
+            // console.log("Num of .component matches: " + this.numDotComponentCount);
 
-            console.log("Num of @component matches: " + this.numAtComponentCount);
+            // console.log("Num of @component matches: " + this.numAtComponentCount);
 
             reportArray[1] = " * Complexity: " + this.analysisDetails.controllersCount + " controllers, " +
                 this.analysisDetails.componentCount + " AngularJS components, " +
@@ -565,7 +595,8 @@ export class AnalysisTool {
                 this.analysisDetails.tsFileCount + " Typescript files.";
         }
         reportArray[2] = " * App size: " + this.analysisDetails.linesOfCode + " lines of code";
-        reportArray[3] = " * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders,";
+        reportArray[3] = " * File Count: " + this.analysisDetails.totalFilesOrFolderCount + " total files/folders, "
+            + this.analysisDetails.relevantFilesOrFolderCount + " relevant files/folders";
         reportArray[4] = " * AngularJS Patterns: ";
 
         if (this.analysisDetails.rootScope) {
