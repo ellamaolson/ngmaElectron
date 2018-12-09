@@ -232,11 +232,19 @@ export class AnalysisTool {
     checkTypeForAST(currentPath: string) {
         if (currentPath.substr(-5) === '.json') {
             this.analysisDetails.relevantFilesOrFolderCount++;
+            this.checkFileForRouter(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkFileForUnitTests(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkAngularVersion(currentPath, fs.readFileSync(currentPath, "utf8"));
+
         }
         else if (this.fileHasTsExtension(currentPath)) {                  // If file is TypeScript ==> TS Parser
             this.analysisDetails.tsFileCount++;
             this.analysisDetails.relevantFilesOrFolderCount++;
             this.testFileUsingTsAST(currentPath);
+
+            this.checkFileForRouter(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkFileForUnitTests(currentPath, fs.readFileSync(currentPath, "utf8"));
+            this.checkAngularVersion(currentPath, fs.readFileSync(currentPath, "utf8"));
         } else {
             let scriptContent;
             if (currentPath.substr(-5) === '.html') {                             // If file is HTML --> HTML Parser --> Check if there's JS
@@ -251,9 +259,11 @@ export class AnalysisTool {
                 this.testJSFileUsingEsprimaParser(currentPath, scriptContent);
                 this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, currentPath, " JavaScript");
 
+
+                this.checkFileForRouter(currentPath, fs.readFileSync(currentPath, "utf8"));
+                this.checkFileForUnitTests(currentPath, fs.readFileSync(currentPath, "utf8"));
+                this.checkAngularVersion(currentPath, fs.readFileSync(currentPath, "utf8"));
             }
-
-
         }
     }
 
@@ -267,22 +277,23 @@ export class AnalysisTool {
     testJSFileUsingEsprimaParser(fileName: string, fileData: string) {
         fileData = this.trimShebang(fileData);  // we always have to trim the file first before scan
         let tree = esprima.parse(fileData);
+        let classTemp = this;
         walk(tree, function ( node:any ) {
             if(node.type === 'Identifier') {
                 if (node.name === '$rootScope') { // find the rootScope
-                    this.analysisDetails.rootScope = true;
-                    this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, fileName, " $rootScope");
+                    classTemp.analysisDetails.rootScope = true;
+                    classTemp.pushValueOnKey(classTemp.analysisDetails.mapOfFilesToConvert, fileName, " $rootScope");
                 } else if (node.name === 'createCustomElement') { // find the createCustomElement
-                    this.analysisDetails.angularElement = true;
+                    classTemp.analysisDetails.angularElement = true;
                 } else if (node.name === 'controller') { // find the controller
-                    this.analysisDetails.controllersCount++;
-                    this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, fileName, " controller");
+                    classTemp.analysisDetails.controllersCount++;
+                    classTemp.pushValueOnKey(classTemp.analysisDetails.mapOfFilesToConvert, fileName, " controller");
                 } else if (node.name === 'component') { // find the component
-                    this.analysisDetails.componentCount++;
+                    classTemp.analysisDetails.componentCount++;
                 }
             }
             if(node.type === 'Literal' && node.value === '@angular/core') {
-                this.analysisDetails.usingAngular = true;
+                classTemp.analysisDetails.usingAngular = true;
             }
         });
     }

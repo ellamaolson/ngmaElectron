@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e45a1867-6f46-4d65-bebc-1492a13b5cb4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/script/lib/analysisTool.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/lib/analysisTool.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/script/result.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/script/result.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -64,7 +61,7 @@
           <entry key="js" value="1549" />
           <entry key="json" value="161" />
           <entry key="md" value="2" />
-          <entry key="ts" value="1337" />
+          <entry key="ts" value="1371" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -74,7 +71,7 @@
           <entry key="JSON" value="131" />
           <entry key="JavaScript" value="1549" />
           <entry key="Markdown" value="2" />
-          <entry key="TypeScript" value="1337" />
+          <entry key="TypeScript" value="1371" />
           <entry key="tsconfig" value="30" />
         </counts>
       </usages-collector>
@@ -87,8 +84,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="241">
-                  <caret line="261" column="9" lean-forward="true" selection-start-line="261" selection-start-column="9" selection-end-line="261" selection-end-column="9" />
+                <state relative-caret-position="293">
+                  <caret line="264" column="92" selection-start-line="264" selection-start-column="92" selection-end-line="264" selection-end-column="92" />
                 </state>
               </provider>
             </entry>
@@ -176,7 +173,7 @@
             <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="54">
-                  <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
+                  <caret line="252" column="30" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
@@ -184,8 +181,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/script/main.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                <state relative-caret-position="225">
+                  <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
                   <folding>
                     <element signature="e#0#51#0" expanded="true" />
                   </folding>
@@ -218,7 +215,7 @@
             <entry file="file://$PROJECT_DIR$/dist/lib/analysisTool.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="3750">
-                  <caret line="250" column="13" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
+                  <caret line="260" column="13" selection-start-line="260" selection-start-column="13" selection-end-line="260" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -295,6 +292,9 @@
       <find>runAn</find>
       <find>@angular</find>
       <find>totalFile</find>
+      <find>walk</find>
+      <find>spec</find>
+      <find>angularEle</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -340,10 +340,10 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/screens/home.html" />
         <option value="$PROJECT_DIR$/src/script/home.js" />
-        <option value="$PROJECT_DIR$/src/script/lib/analysisTool.ts" />
         <option value="$PROJECT_DIR$/src/script/result.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/script/main.ts" />
+        <option value="$PROJECT_DIR$/src/script/lib/analysisTool.ts" />
       </list>
     </option>
   </component>
@@ -474,18 +474,17 @@
       <option name="presentableId" value="Default" />
       <updated>1543879822430</updated>
       <workItem from="1543879985960" duration="11441000" />
-      <workItem from="1544391861706" duration="444000" />
+      <workItem from="1544391861706" duration="1980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32403000" />
+    <option name="totallyTimeSpent" value="33939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13601127" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13601127" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -499,7 +498,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" visible="true" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4989429" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010571" side_tool="true" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -601,7 +600,7 @@
     <entry file="file://$PROJECT_DIR$/dist/lib/analysisTool.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3750">
-          <caret line="250" column="13" selection-start-line="250" selection-start-column="13" selection-end-line="250" selection-end-column="13" />
+          <caret line="260" column="13" selection-start-line="260" selection-start-column="13" selection-end-line="260" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -646,16 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/script/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/script/result.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -663,10 +652,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/script/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/script/lib/analysisTool.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="261" column="9" lean-forward="true" selection-start-line="261" selection-start-column="9" selection-end-line="261" selection-end-column="9" />
+        <state relative-caret-position="293">
+          <caret line="264" column="92" selection-start-line="264" selection-start-column="92" selection-end-line="264" selection-end-column="92" />
         </state>
       </provider>
     </entry>
