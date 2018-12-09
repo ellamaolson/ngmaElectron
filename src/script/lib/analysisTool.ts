@@ -247,7 +247,7 @@ export class AnalysisTool {
 
 
     testJSFileUsingEsprimaParser(fileData: string) {
-        // fileData = this.trimShebang(fileData);  // we always have to trim the file first before scan
+        fileData = this.trimShebang(fileData);  // we always have to trim the file first before scan
         let tree = esprima.parse(fileData);
         walk(tree, function ( node:any ) {
             if(node.type === 'Identifier') {
@@ -659,4 +659,10 @@ export class AnalysisTool {
         return false;
     }
 
+    trimShebang(inputBody: string): string{
+        if (inputBody.substring(0, 2) === '#!') {
+            return inputBody.replace("#!", "//#!");
+        }
+        return inputBody;
+    }
 }
