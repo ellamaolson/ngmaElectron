@@ -17,7 +17,6 @@ function analyzeFile(dir, fileName) {
             + "To learn more about criteria selection, visit https://angular.io/guide/upgrade#preparation." + '<br>';
 
         let blah = analysis.runAppStatistics();
-        // console.log('BLAh: ' + blah);
         blah.forEach(function (element) {
             if (element === blah[0]) {
                 report += '<br><h4>' + element + '</h4>';

@@ -241,18 +241,19 @@ export class AnalysisTool {
             let scriptContent;
             if (currentPath.substr(-5) === '.html') {                             // If file is HTML --> HTML Parser --> Check if there's JS
                 const $ = cheerio.load(fs.readFileSync(currentPath, "utf8"));
-                scriptContent = $('script').html();
+                // scriptContent = $('script').html();
                 this.analysisDetails.relevantFilesOrFolderCount++;
             } else if (currentPath.substr(-3) === '.js') {
                 this.analysisDetails.jsFileCount++;
                 this.analysisDetails.relevantFilesOrFolderCount++;
                 console.log(this.analysisDetails.jsFileCount);
                 scriptContent = fs.readFileSync(currentPath, "utf8");
+                this.testJSFileUsingEsprimaParser(currentPath, scriptContent);
                 this.pushValueOnKey(this.analysisDetails.mapOfFilesToConvert, currentPath, " JavaScript");
 
             }
 
-            // this.testJSFileUsingEsprimaParser(currentPath, scriptContent);
+
         }
     }
 
